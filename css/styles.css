@@ -127,6 +127,7 @@ hr {
 .content {
   flex: 1;
   min-width: 0;
+  max-width: 1000px;
   padding: 24vh 64px 80px 64px;
   width:  100%;
   display: flex;
@@ -143,7 +144,7 @@ hr {
 h1,
 h2,
 h3 {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   letter-spacing: -0.03em;
   font-weight: 550;
   line-height: 1.15;
@@ -153,11 +154,11 @@ h1 {
   margin: 0 0 16px;
 }
 h2 {
-  font-size: 1.7rem;
+  font-size: 1.6rem;
   margin: 0 0 12px;
 }
 h3 {
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin: 0 0 8px;
 }
 .lede {
@@ -234,7 +235,7 @@ h3 {
 }
 
 .item .release h3{
-    font-size: 1rem;
+    font-size: .9rem;
     margin-bottom: 0;
 }
 
