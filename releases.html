@@ -18,15 +18,18 @@
             background: none;
             border: 0;
             padding: 0;
-            margin-right: .5em;
             width: 1.5em;
             text-align: left;
             font: inherit;
             color: inherit;
             cursor: pointer;
         }
+
         .track-btn:focus-visible,
-        .player-btn:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+        .player-btn:focus-visible {
+            outline: 2px solid currentColor;
+            outline-offset: 2px;
+        }
 
         /* Sticky bottom player: slides up the first time a track is played */
         .player {
@@ -45,7 +48,11 @@
             font: inherit;
             transform: translateY(100%);
         }
-        .player.is-active { transform: translateY(0); }
+
+        .player.is-active {
+            transform: translateY(0);
+        }
+
         .player-btn {
             background: none;
             border: 1px solid currentColor;
@@ -57,6 +64,7 @@
             color: inherit;
             cursor: pointer;
         }
+
         .player-info {
             min-width: 0;
             flex: 0 1 18rem;
@@ -64,37 +72,82 @@
             flex-direction: column;
             line-height: 1.25;
         }
-        .player-label { font-size: .75em; opacity: .65; text-transform: uppercase; letter-spacing: .05em; }
-        .player-title, .player-release { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .player-release { font-size: .85em; opacity: .75; }
-        .player-seek { flex: 1 1 auto; min-width: 0; accent-color: currentColor; cursor: pointer; }
-        .player-time { flex: none; font-variant-numeric: tabular-nums; font-size: .85em; }
-        body.has-player { padding-bottom: 4.5rem; }
+
+        .player-label {
+            font-size: .75em;
+            opacity: .65;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+        }
+
+        .player-title,
+        .player-release {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .player-release {
+            font-size: .85em;
+            opacity: .75;
+        }
+
+        .player-seek {
+            flex: 1 1 auto;
+            min-width: 0;
+            accent-color: currentColor;
+            cursor: pointer;
+        }
+
+        .player-time {
+            flex: none;
+            font-variant-numeric: tabular-nums;
+            font-size: .85em;
+        }
+
+        body.has-player {
+            padding-bottom: 4.5rem;
+        }
 
         @media (max-width: 600px) {
-            .player { gap: .6rem; padding: .6rem .75rem; }
-            .player-time { display: none; }
-            .player-info { flex-basis: 8rem; }
+            .player {
+                gap: .6rem;
+                padding: .6rem .75rem;
+            }
+
+            .player-time {
+                display: none;
+            }
+
+            .player-info {
+                flex-basis: 8rem;
+            }
         }
-        @media (prefers-reduced-motion: reduce) { .player { transition: none; } }
+
+        @media (prefers-reduced-motion: reduce) {
+            .player {
+                transition: none;
+            }
+        }
     </style>
 </head>
 <script>
     document.addEventListener('click', (e) => {
-    const toggle = e.target.closest('[data-toggle]');
-    if (!toggle) return;
+        const toggle = e.target.closest('[data-toggle]');
+        if (!toggle) return;
 
-    const item = toggle.closest('.item');
-    const aboutBtn = item.querySelector('.release-btn .btn');
-    const details = item.querySelector('.details');
+        const item = toggle.closest('.item');
+        const aboutBtn = item.querySelector('.release-btn .btn');
+        const details = item.querySelector('.details');
 
-    const isOpen = item.classList.toggle('is-open');
-    aboutBtn.setAttribute('aria-expanded', isOpen);
-    details.inert = !isOpen; // keeps hidden content out of tab order / screen readers
+        const isOpen = item.classList.toggle('is-open');
+        aboutBtn.setAttribute('aria-expanded', isOpen);
+        details.inert = !isOpen; // keeps hidden content out of tab order / screen readers
 
-    if (!isOpen) aboutBtn.focus(); // return focus when closing
-});
+        if (!isOpen) aboutBtn.focus(); // return focus when closing
+    });
 </script>
+
 <body data-page="home">
     <!--mobile only-->
     <div class="mobile-bar">
@@ -139,11 +192,13 @@
                     <h3>Sister in Red / Stilt</h3>
                     <p>2021</p>
                     <div class="tracks">
-                        <p><button type="button" class="track-btn" data-src="assets/audio/sister-in-red.mp3" data-title="Sister in Red" aria-label="Play Sister in Red">▶</button> Sister in Red</p>
-                        <p><button type="button" class="track-btn" data-src="assets/audio/stilt.mp3" data-title="Stilt" aria-label="Play Stilt">▶</button> Stilt</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/sister-in-red.mp3"
+                                data-title="Sister in Red" aria-label="Play Sister in Red">▶</button> Sister in Red</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/stilt.mp3" data-title="Stilt"
+                                aria-label="Play Stilt">▶</button> Stilt</p>
                     </div>
                 </div>
-                <a href="#">Download / Stream ↗</a>
+                <a target="_blank" href="https://danlanga.bandcamp.com/album/sister-in-red-stilt">Bandcamp ↗</a>
                 <div class="release-btn">
                     <button type="button" class="btn" data-toggle aria-expanded="false">ABOUT</button>
                 </div>
@@ -153,16 +208,30 @@
                     <div class="details-inner">
                         <div class="details-columns">
                             <div class="col">
-                                <p>I'm extremely excited to be releasing a double-sided single featuring music from a brilliant short film by Elle Rinaldi and a track that shows the lineage of how this score came to be.</p>
+                                <p>I'm extremely excited to be releasing a double-sided single featuring music from a
+                                    brilliant short film by Elle Rinaldi and a track that shows the lineage of how this
+                                    score came to be.</p>
                                 <br>
-                                <p>Elle and I met as she was beginning the edit of this film, and it was such a joy to get to work on the score after so many amazing conversations we shared about music and sound at the residency where we were working.</p>
+                                <p>Elle and I met as she was beginning the edit of this film, and it was such a joy to
+                                    get to work on the score after so many amazing conversations we shared about music
+                                    and sound at the residency where we were working.</p>
                                 <br>
-                                <p>On the A-side, ‘Sister in Red’ is an arrangement of the main themes from the score; a score that began as a completely different track, collaborating with my friends Juan Herrera and Isabel Ong. This score began as ‘Stilt,’ the B-side of the release, an open score piece for prepared vibraphone and violin. The final element was a fixed electronics track built entirely from bird sounds Juan shared with me and became the throughline between Stilt and the score.</p>
+                                <p>On the A-side, ‘Sister in Red’ is an arrangement of the main themes from the score; a
+                                    score that began as a completely different track, collaborating with my friends Juan
+                                    Herrera and Isabel Ong. This score began as ‘Stilt,’ the B-side of the release, an
+                                    open score piece for prepared vibraphone and violin. The final element was a fixed
+                                    electronics track built entirely from bird sounds Juan shared with me and became the
+                                    throughline between Stilt and the score.</p>
                                 <br>
-                                <p>As part of the release, Elle and I have made a poster from the film artwork that we are putting up for sale as a fundraiser for The Sameer Project: Mass Displacement Response Campaign. We will be selling these posters during the month of October, and all proceeds from both the music and poster sales will be donated to The Sameer Project in support of their emergency medical camps in Gaza.</p>
+                                <p>As part of the release, Elle and I have made a poster from the film artwork that we
+                                    are putting up for sale as a fundraiser for The Sameer Project: Mass Displacement
+                                    Response Campaign. We will be selling these posters during the month of October, and
+                                    all proceeds from both the music and poster sales will be donated to The Sameer
+                                    Project in support of their emergency medical camps in Gaza.</p>
                             </div>
                             <div class="col">
-                                <p>Thanks for listening to these tracks made with people I admire so much and supporting this cause that is so important right now.<br><br>
+                                <p>Thanks for listening to these tracks made with people I admire so much and supporting
+                                    this cause that is so important right now.<br><br>
                                     <br>
                                     released October 1, 2025
                                     <br><br>
@@ -174,11 +243,15 @@
                                     Isabel Ong – Violin
                                     Juan Herrera – Percussion
                                     license
-                                    all rights reserved</p>
+                                    all rights reserved
+                                </p>
                                 <br>
-                                <p><a href="#">'Sister in Red' Poster ($15) ↗</a></p>
+                                <p><a target="_blank"
+                                        href="https://danlanga.bandcamp.com/merch/sister-in-red-poster">'Sister in Red'
+                                        Poster ($15) ↗</a></p>
                                 <br>
-                                <div style="display:flex; justify-content: end;"><button type="button" class="btn" data-toggle>LESS</button></div>
+                                <div style="display:flex; justify-content: end;"><button type="button" class="btn"
+                                        data-toggle>COLLAPSE</button></div>
                             </div>
                         </div>
                     </div>
@@ -194,10 +267,14 @@
                     <h3>War of Attrition (feat. Hauzu)</h3>
                     <p>2024</p>
                     <div class="tracks">
-                        <p><button type="button" class="track-btn" data-src="assets/audio/war-of-attrition-feat-hauzu.mp3" data-title="War of Attrition feat. Hauzu" aria-label="Play War of Attrition feat. Hauzu">▶</button> War of Attrition feat. Hauzu</p>
+                        <p><button type="button" class="track-btn"
+                                data-src="assets/audio/war-of-attrition-feat-hauzu.mp3"
+                                data-title="War of Attrition feat. Hauzu"
+                                aria-label="Play War of Attrition feat. Hauzu">▶</button> War of Attrition feat. Hauzu
+                        </p>
                     </div>
                 </div>
-                <a href="#">Download / Stream ↗</a>
+                <a target="_blank" href="https://cmntxrecords.bandcamp.com/album/all-semantics-iii">Bandcamp ↗</a>
                 <div class="release-btn">
                     <button type="button" class="btn" data-toggle aria-expanded="false">ABOUT</button>
                 </div>
@@ -206,17 +283,19 @@
                     <div class="details-inner">
                         <div class="details-columns">
                             <div class="col">
-                                <p>About text for War of Attrition (feat. Hauzu) goes here.</p>
+                                <p>released August 2, 2024
+                                    on <a target="_blank" href="https://www.cmntxrecords.com/">cmntx records</a><br><br>
+
+                                    from <a target="_blank"
+                                        href=https://cmntxrecords.bandcamp.com/album/all-semantics-iii>All Semantics
+                                        (III)</a>,<br>
+                                    Music by Dan Langa and Benjamin Goodbody<br>
+                                    Mixed by Dan Langa</p>
                             </div>
                             <div class="col">
-                                <p>released 2024
-                                    <br><br>
-                                    credits go here
-                                    <br><br>
-                                    license
-                                    all rights reserved</p>
-                                <br>
-                                <div style="display:flex; justify-content: end;"><button type="button" class="btn" data-toggle>LESS</button></div>
+
+                                <div style="display:flex; justify-content: end;"><button type="button" class="btn"
+                                        data-toggle>COLLAPSE</button></div>
                             </div>
                         </div>
                     </div>
@@ -232,13 +311,24 @@
                     <h3>I'm Alright, I'm OK (Reworks)</h3>
                     <p>2024</p>
                     <div class="tracks">
-                        <p><button type="button" class="track-btn" data-src="assets/audio/shell-adlai-remix.mp3" data-title="shell (adlai remix)" aria-label="Play shell (adlai remix)">▶</button> shell (adlai remix)</p>
-                        <p><button type="button" class="track-btn" data-src="assets/audio/mayhap-fynn-michlin-remix.mp3" data-title="mayhap (Fynn Michlin remix)" aria-label="Play mayhap (Fynn Michlin remix)">▶</button> mayhap (Fynn Michlin remix)</p>
-                        <p><button type="button" class="track-btn" data-src="assets/audio/shell-kelz-remix.mp3" data-title="shell (kelz remix)" aria-label="Play shell (kelz remix)">▶</button> shell (kelz remix)</p>
-                        <p><button type="button" class="track-btn" data-src="assets/audio/want-of-a-bird-nyokabi-kariuki-remix.mp3" data-title="want of a bird (Nyokabi Kariũki remix)" aria-label="Play want of a bird (Nyokabi Kariũki remix)">▶</button> want of a bird (Nyokabi Kariũki remix)</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/shell-adlai-remix.mp3"
+                                data-title="shell (adlai remix)" aria-label="Play shell (adlai remix)">▶</button> shell
+                            (adlai remix)</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/mayhap-fynn-michlin-remix.mp3"
+                                data-title="mayhap (Fynn Michlin remix)"
+                                aria-label="Play mayhap (Fynn Michlin remix)">▶</button> mayhap (Fynn Michlin remix)</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/shell-kelz-remix.mp3"
+                                data-title="shell (kelz remix)" aria-label="Play shell (kelz remix)">▶</button> shell
+                            (kelz remix)</p>
+                        <p><button type="button" class="track-btn"
+                                data-src="assets/audio/want-of-a-bird-nyokabi-kariuki-remix.mp3"
+                                data-title="want of a bird (Nyokabi Kariũki remix)"
+                                aria-label="Play want of a bird (Nyokabi Kariũki remix)">▶</button> want of a bird
+                            (Nyokabi Kariũki remix)</p>
                     </div>
                 </div>
-                <a href="#">Download / Stream ↗</a>
+                <a target="_blank" href="https://linktr.ee/danlanga?lt_utm_source=lt_admin_share_link#379704105">Buy /
+                    Stream ↗</a>
                 <div class="release-btn">
                     <button type="button" class="btn" data-toggle aria-expanded="false">ABOUT</button>
                 </div>
@@ -247,17 +337,32 @@
                     <div class="details-inner">
                         <div class="details-columns">
                             <div class="col">
-                                <p>About text for I'm Alright, I'm OK (Reworks) goes here.</p>
+                                <p><strong>Credits</strong><br>
+                                    ‘shell - adlai remix’
+                                    Produced and Mixed by adlai
+                                    <br><br>
+                                    'mayhap - Fynn Michlin remix'
+                                    Produced and Mixed by Fynn Michlin
+                                    <br><br>
+                                    ‘shell - kelz remix’
+                                    Produced by kelz
+                                    Mixed by Dan Langa
+                                    <br><br>
+                                    'want of a bird - Nyokabi Kariũki remix'
+                                    Produced by Nyokabi Kariũki
+                                    Mixed by Dan Langa
                             </div>
                             <div class="col">
-                                <p>released 2024
+                                <p>
+                                    Mastered by Alex Ring Gray except 'want of a bird (Nyokabi Kariũki remix)' Mastered
+                                    by Dan Langa
                                     <br><br>
-                                    credits go here
-                                    <br><br>
-                                    license
-                                    all rights reserved</p>
+                                    Art by Luca Civita & Justin Cook
+                                </p>
+                                </p>
                                 <br>
-                                <div style="display:flex; justify-content: end;"><button type="button" class="btn" data-toggle>LESS</button></div>
+                                <div style="display:flex; justify-content: end;"><button type="button" class="btn"
+                                        data-toggle>COLLAPSE</button></div>
                             </div>
                         </div>
                     </div>
@@ -273,20 +378,39 @@
                     <h3>I'm Alright, I'm OK</h3>
                     <p>2024</p>
                     <div class="tracks">
-                        <p><button type="button" class="track-btn" data-src="assets/audio/im_alright_2/01 - Dan Langa - intro.mp3" data-title="intro" aria-label="Play intro">▶</button> intro</p>
-                        <p><button type="button" class="track-btn" data-src="assets/audio/im_alright_2/02 - Dan Langa - mayhap.mp3" data-title="mayhap" aria-label="Play mayhap">▶</button> mayhap</p>
-                        <p><button type="button" class="track-btn" data-src="assets/audio/im_alright_2/03 - Dan Langa - structure 2.mp3" data-title="structure 2" aria-label="Play structure 2">▶</button> structure 2</p>
-                        <p><button type="button" class="track-btn" data-src="assets/audio/speak-feat-strats.mp3" data-title="speak (feat. Stratøs)" aria-label="Play speak (feat. Stratøs)">▶</button> speak (feat. Stratøs)</p>
-                        <p><button type="button" class="track-btn" data-src="assets/audio/interlude.mp3" data-title="interlude" aria-label="Play interlude">▶</button> interlude</p>
-                        <p><button type="button" class="track-btn" data-src="assets/audio/shell.mp3" data-title="shell" aria-label="Play shell">▶</button> shell</p>
-                        <p><button type="button" class="track-btn" data-src="assets/audio/whim.mp3" data-title="whim" aria-label="Play whim">▶</button> whim</p>
-                        <p><button type="button" class="track-btn" data-src="assets/audio/nether.mp3" data-title="nether" aria-label="Play nether">▶</button> nether</p>
-                        <p><button type="button" class="track-btn" data-src="assets/audio/bloody-rainbow-feat-sabeth-perez.mp3" data-title="bloody rainbow (feat Sabeth Perez)" aria-label="Play bloody rainbow (feat Sabeth Perez)">▶</button> bloody rainbow (feat Sabeth Perez)</p>
-                        <p><button type="button" class="track-btn" data-src="assets/audio/presage.mp3" data-title="presage" aria-label="Play presage">▶</button> presage</p>
-                        <p><button type="button" class="track-btn" data-src="assets/audio/want-of-a-bird-verily.mp3" data-title="want of a bird (verily)" aria-label="Play want of a bird (verily)">▶</button> want of a bird (verily)</p>
+                        <p><button type="button" class="track-btn"
+                                data-src="assets/audio/im_alright_2/01 - Dan Langa - intro.mp3" data-title="intro"
+                                aria-label="Play intro">▶</button> intro</p>
+                        <p><button type="button" class="track-btn"
+                                data-src="assets/audio/im_alright_2/02 - Dan Langa - mayhap.mp3" data-title="mayhap"
+                                aria-label="Play mayhap">▶</button> mayhap</p>
+                        <p><button type="button" class="track-btn"
+                                data-src="assets/audio/im_alright_2/03 - Dan Langa - structure 2.mp3"
+                                data-title="structure 2" aria-label="Play structure 2">▶</button> structure 2</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/speak-feat-strats.mp3"
+                                data-title="speak (feat. Stratøs)" aria-label="Play speak (feat. Stratøs)">▶</button>
+                            speak (feat. Stratøs)</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/interlude.mp3"
+                                data-title="interlude" aria-label="Play interlude">▶</button> interlude</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/shell.mp3" data-title="shell"
+                                aria-label="Play shell">▶</button> shell</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/whim.mp3" data-title="whim"
+                                aria-label="Play whim">▶</button> whim</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/nether.mp3"
+                                data-title="nether" aria-label="Play nether">▶</button> nether</p>
+                        <p><button type="button" class="track-btn"
+                                data-src="assets/audio/bloody-rainbow-feat-sabeth-perez.mp3"
+                                data-title="bloody rainbow (feat Sabeth Perez)"
+                                aria-label="Play bloody rainbow (feat Sabeth Perez)">▶</button> bloody rainbow (feat
+                            Sabeth Perez)</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/presage.mp3"
+                                data-title="presage" aria-label="Play presage">▶</button> presage</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/want-of-a-bird-verily.mp3"
+                                data-title="want of a bird (verily)"
+                                aria-label="Play want of a bird (verily)">▶</button> want of a bird (verily)</p>
                     </div>
                 </div>
-                <a href="#">Download / Stream ↗</a>
+                <a target="_blank" href="https://danlanga.bandcamp.com/album/im-alright-im-ok">Bandcamp ↗</a>
                 <div class="release-btn">
                     <button type="button" class="btn" data-toggle aria-expanded="false">ABOUT</button>
                 </div>
@@ -295,17 +419,86 @@
                     <div class="details-inner">
                         <div class="details-columns">
                             <div class="col">
-                                <p>About text for I'm Alright, I'm OK goes here.</p>
+                                <p><strong>Liner Notes by Vanessa Ague</strong><br>
+                                    Music often offers us space to pause and process the chaos around us. The tracks
+                                    that comprise I’m Alright, I’m OK gave composer, producer, and arranger Dan Langa
+                                    that much-needed space after three recent moments of uncertainty. The Northampton,
+                                    Massachusetts-based artist employs detailed texture and sweeping layers to make
+                                    music that meditates on the ups and downs of his own life over the last two years.
+                                    In the process, he offers us a place to ponder our own experiences through music.
+<br><br>
+                                    I’m Alright, I’m OK, Langa’s debut album, employs his skills as both a producer and
+                                    composer. Langa has extensive experience in composition, working alongside film
+                                    composers and studying with composers like Julia Wolfe and Robert Honstein at New
+                                    York University. But he’s always had an eclectic range of interests: Growing up near
+                                    Detroit, he was surrounded by a plethora of musical styles, from folk to soul to
+                                    classical. In recent years, he’s expanded his production craft, gaining inspiration
+                                    from electronic artists like Burial and Tim Hecker. The resulting album is made of
+                                    wafting ambient, techno beats, and cavernous statements, showcasing Langa’s interest
+                                    in creating lattices of blended sounds. Each track on the album weaves personal
+                                    field recordings from moments in Langa’s life with electronics and acoustic solos by
+                                    guitarist Evan O. Adams, drummer Josh Harmon, violinist Isabel Ong, vocalist Sabeth
+                                    Perez, and saxophonist Stratøs.
+<br><br>
+                                    Throughout I’m Alright, I’m OK, a lo-fi quality cloaks every melody, serving as a
+                                    vehicle for thinking about the past. Many tracks on the album unite small, personal
+                                    memories with expansive melodies that balance darkness and lightness in gentle
+                                    waves. “Intro” opens the album with this pattern: At Christmas a couple of years ago
+                                    with his family, Langa recorded everyone rubbing their fingers along the rim of
+                                    their drinking glasses, which made a ringing sound. Throughout the track, that field
+                                    recording is abstracted, and the drones Langa forms bloom from a gravelly crunch
+                                    into a rainbow of vibrant colors. It’s not about the specificity of the memory, but
+                                    rather how it feels to remember it.
+<br><br>Those moments of ambiguous warmth morph into icier atmospheres and back again as I’m
+                                    Alright, I’m OK continues, highlighting the dichotomy between good moments and bad
+                                    ones—and how you might need one to get to the other. The only cover on the album, of
+                                    Daniel Johnston’s “bloody rainbow,” hammers home this idea, a ballad that blooms
+                                    from a swarming drone into emphatic guitar plucks and simple vocals. Other tracks,
+                                    like “speak,” foreground an upbeat, dance-inspired sound mixed with ecstatic
+                                    saxophone; the extroverted sound of “speak” ventures into “interlude,” a melancholy,
+                                    rippling track with slowed-down, chant-like vocals and watery gurgles. In these
+                                    constant shifts, Langa illuminates how uncertainty teeters, never fully dark nor
+                                    fully bright.
+<br><br>
+                                    </p>
                             </div>
                             <div class="col">
-                                <p>released 2024
-                                    <br><br>
-                                    credits go here
-                                    <br><br>
-                                    license
-                                    all rights reserved</p>
+                                <p>
+                                    But the album’s overarching trajectory suggests hope: It moves from warmth to
+                                    jaggedness and back to vivid, rounded edges. In Langa’s music, that balance creates
+                                    a feeling of wistful reminiscence. At its core, his music is personal, derived from
+                                    his own experiences over the past couple of years. Yet in the delicate balance he
+                                    strikes, we’re able to forge our own connections, joining together in reflection.–
+                                    Vanessa Ague<br><br><strong>Credits</strong>
+<br>
+All songs written, produced, and performed by Dan Langa © 2022 Tree Town Music Publishing (ASCAP)
+<br><br>
+except:
+<br><br>
+Track 9 – "bloody rainbow" Music and Lyrics by Daniel Johnston © 2000 Eternal Yip Eye Music (BMI)
+<br><br>
+Additional Writing By:
+Stratøs (4)
+<br><br>
+Additional Performances By:
+Evan O. Adams - guitar (9)
+Josh Harmon - drums (4, 11)
+Isabel Ong - violin (9)
+Sabeth Perez - vocals (5, 7, 9)
+Stratøs (4)
+Mix by Dan Langa in Northampton, MA
+Mastered by Toshi Tsuruoka at Ecotone Lab
+<br><br>
+Liner Notes by Vanessa Ague
+Art and Design by Luca Civita & Justin Cook
+<br><br><strong>Music Videos by Justin Cook & Luca Civita</strong><br>
+<a target="_blank" href="https://www.youtube.com/watch?v=lzacA2sREJc">speak (feat. Stratøs)</a><br>
+<a target="_blank" href="https://www.youtube.com/watch?v=81fyGBm-Zug">want of a bird (verily)</a><br>
+<a target="_blank" href="https://www.youtube.com/watch?v=1MiI4AKHJjk">structure 2</a>
+                                </p>
                                 <br>
-                                <div style="display:flex; justify-content: end;"><button type="button" class="btn" data-toggle>LESS</button></div>
+                                <div style="display:flex; justify-content: end;"><button type="button" class="btn"
+                                        data-toggle>COLLAPSE</button></div>
                             </div>
                         </div>
                     </div>
@@ -321,13 +514,11 @@
                     <h3>Ochre</h3>
                     <p>2024</p>
                     <div class="tracks">
-                        <p><button type="button" class="track-btn" data-src="assets/audio/shell-adlai-remix.mp3" data-title="shell (adlai remix)" aria-label="Play shell (adlai remix)">▶</button> shell (adlai remix)</p>
-                        <p><button type="button" class="track-btn" data-src="assets/audio/mayhap-fynn-michlin-remix.mp3" data-title="mayhap (Fynn Michlin remix)" aria-label="Play mayhap (Fynn Michlin remix)">▶</button> mayhap (Fynn Michlin remix)</p>
-                        <p><button type="button" class="track-btn" data-src="assets/audio/shell-kelz-remix.mp3" data-title="shell (kelz remix)" aria-label="Play shell (kelz remix)">▶</button> shell (kelz remix)</p>
-                        <p><button type="button" class="track-btn" data-src="assets/audio/want-of-a-bird-nyokabi-kariuki-remix.mp3" data-title="want of a bird (Nyokabi Kariũki remix)" aria-label="Play want of a bird (Nyokabi Kariũki remix)">▶</button> want of a bird (Nyokabi Kariũki remix)</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/shell-adlai-remix.mp3"
+                                data-title="shell (adlai remix)" aria-label="Play shell (adlai remix)">▶</button>Ochre</p>
                     </div>
                 </div>
-                <a href="#">Download / Stream ↗</a>
+                <a target="_blank" href="https://cmntxrecords.bandcamp.com/album/all-semantics-i">Download / Stream ↗</a>
                 <div class="release-btn">
                     <button type="button" class="btn" data-toggle aria-expanded="false">ABOUT</button>
                 </div>
@@ -336,17 +527,19 @@
                     <div class="details-inner">
                         <div class="details-columns">
                             <div class="col">
-                                <p>About text for Ochre goes here.</p>
+                                <p>released November, 1 2021
+on <a href="https://www.cmntxrecords.com/" target="_blank">cmntx records</a>
+<br><br>
+Ochre is grown from field recordings taken at Paint Pots in Kootenay National Park 
+<br><br>
+composition, mixing, mastering - Dan Langa</p>
                             </div>
                             <div class="col">
-                                <p>released 2024
-                                    <br><br>
-                                    credits go here
-                                    <br><br>
-                                    license
-                                    all rights reserved</p>
+                                <p>
+                                </p>
                                 <br>
-                                <div style="display:flex; justify-content: end;"><button type="button" class="btn" data-toggle>LESS</button></div>
+                                <div style="display:flex; justify-content: end;"><button type="button" class="btn"
+                                        data-toggle>COLLAPSE</button></div>
                             </div>
                         </div>
                     </div>
@@ -362,13 +555,11 @@
                     <h3>Swell (feat. Sam Johnson)</h3>
                     <p>2024</p>
                     <div class="tracks">
-                        <p><button type="button" class="track-btn" data-src="assets/audio/shell-adlai-remix.mp3" data-title="shell (adlai remix)" aria-label="Play shell (adlai remix)">▶</button> shell (adlai remix)</p>
-                        <p><button type="button" class="track-btn" data-src="assets/audio/mayhap-fynn-michlin-remix.mp3" data-title="mayhap (Fynn Michlin remix)" aria-label="Play mayhap (Fynn Michlin remix)">▶</button> mayhap (Fynn Michlin remix)</p>
-                        <p><button type="button" class="track-btn" data-src="assets/audio/shell-kelz-remix.mp3" data-title="shell (kelz remix)" aria-label="Play shell (kelz remix)">▶</button> shell (kelz remix)</p>
-                        <p><button type="button" class="track-btn" data-src="assets/audio/want-of-a-bird-nyokabi-kariuki-remix.mp3" data-title="want of a bird (Nyokabi Kariũki remix)" aria-label="Play want of a bird (Nyokabi Kariũki remix)">▶</button> want of a bird (Nyokabi Kariũki remix)</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/shell-adlai-remix.mp3"
+                                data-title="shell (adlai remix)" aria-label="Play shell (adlai remix)">▶</button>Swell (feat. Sam Johnson)</p>
                     </div>
                 </div>
-                <a href="#">Download / Stream ↗</a>
+                <a target="_blank" href="https://lnkfi.re/3Yv6YMHK">Download / Stream ↗</a>
                 <div class="release-btn">
                     <button type="button" class="btn" data-toggle aria-expanded="false">ABOUT</button>
                 </div>
@@ -377,17 +568,21 @@
                     <div class="details-inner">
                         <div class="details-columns">
                             <div class="col">
-                                <p>About text for Swell (feat. Sam Johnson) goes here.</p>
+                                <p>recorded March 11, 2019 in Columbus, OH
+<br><br>
+released April 24, 2020
+<br><br>
+composition, mixing - Dan Langa
+cello<br><br>composition - Sam Johnson
+<br><br>
+artwork - Mimi Harding</p>
                             </div>
                             <div class="col">
-                                <p>released 2024
-                                    <br><br>
-                                    credits go here
-                                    <br><br>
-                                    license
-                                    all rights reserved</p>
+                                <p>
+                                </p>
                                 <br>
-                                <div style="display:flex; justify-content: end;"><button type="button" class="btn" data-toggle>LESS</button></div>
+                                <div style="display:flex; justify-content: end;"><button type="button" class="btn"
+                                        data-toggle>COLLAPSE</button></div>
                             </div>
                         </div>
                     </div>
@@ -403,13 +598,11 @@
                     <h3>5th & William</h3>
                     <p>2024</p>
                     <div class="tracks">
-                        <p><button type="button" class="track-btn" data-src="assets/audio/shell-adlai-remix.mp3" data-title="shell (adlai remix)" aria-label="Play shell (adlai remix)">▶</button> shell (adlai remix)</p>
-                        <p><button type="button" class="track-btn" data-src="assets/audio/mayhap-fynn-michlin-remix.mp3" data-title="mayhap (Fynn Michlin remix)" aria-label="Play mayhap (Fynn Michlin remix)">▶</button> mayhap (Fynn Michlin remix)</p>
-                        <p><button type="button" class="track-btn" data-src="assets/audio/shell-kelz-remix.mp3" data-title="shell (kelz remix)" aria-label="Play shell (kelz remix)">▶</button> shell (kelz remix)</p>
-                        <p><button type="button" class="track-btn" data-src="assets/audio/want-of-a-bird-nyokabi-kariuki-remix.mp3" data-title="want of a bird (Nyokabi Kariũki remix)" aria-label="Play want of a bird (Nyokabi Kariũki remix)">▶</button> want of a bird (Nyokabi Kariũki remix)</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/shell-adlai-remix.mp3"
+                                data-title="shell (adlai remix)" aria-label="Play shell (adlai remix)">▶</button>5th & William</p>
                     </div>
                 </div>
-                <a href="#">Download / Stream ↗</a>
+                <a href="https://lnkfi.re/cC35Bc54" target="_blank">Download / Stream ↗</a>
                 <div class="release-btn">
                     <button type="button" class="btn" data-toggle aria-expanded="false">ABOUT</button>
                 </div>
@@ -418,17 +611,23 @@
                     <div class="details-inner">
                         <div class="details-columns">
                             <div class="col">
-                                <p>About text for 5th &amp; William goes here.</p>
+                                <p>Tape Loop Recorded With:
+<br><br>
+Tascam Portastudio 414 MKII
+Korg Minilogue
+T-Rex Replay Box
+Boss Time Delay
+<br><br>
+July 22, 2019
+<br><br>
+recorded, mixed, and mastered by Dan Langa</p>
                             </div>
                             <div class="col">
-                                <p>released 2024
-                                    <br><br>
-                                    credits go here
-                                    <br><br>
-                                    license
-                                    all rights reserved</p>
+                                <p>
+                                </p>
                                 <br>
-                                <div style="display:flex; justify-content: end;"><button type="button" class="btn" data-toggle>LESS</button></div>
+                                <div style="display:flex; justify-content: end;"><button type="button" class="btn"
+                                        data-toggle>COLLAPSE</button></div>
                             </div>
                         </div>
                     </div>
@@ -445,7 +644,8 @@
             <span class="player-release" id="player-release"></span>
         </div>
         <span class="player-time" id="player-time">0:00</span>
-        <input type="range" class="player-seek" id="player-seek" min="0" max="100" step="0.1" value="0" aria-label="Seek">
+        <input type="range" class="player-seek" id="player-seek" min="0" max="100" step="0.1" value="0"
+            aria-label="Seek">
         <span class="player-time" id="player-duration">0:00</span>
     </div>
     <script>
@@ -455,13 +655,13 @@
             audio.preload = 'none';
             const PLAY = '▶', PAUSE = '❚❚';
 
-            const player   = document.getElementById('player');
-            const pToggle  = document.getElementById('player-toggle');
-            const pTitle   = document.getElementById('player-title');
+            const player = document.getElementById('player');
+            const pToggle = document.getElementById('player-toggle');
+            const pTitle = document.getElementById('player-title');
             const pRelease = document.getElementById('player-release');
-            const pSeek    = document.getElementById('player-seek');
-            const pTime    = document.getElementById('player-time');
-            const pDur     = document.getElementById('player-duration');
+            const pSeek = document.getElementById('player-seek');
+            const pTime = document.getElementById('player-time');
+            const pDur = document.getElementById('player-duration');
 
             let current = null;   // the track button that is loaded
             let seeking = false;
@@ -532,7 +732,7 @@
             });
 
             pSeek.addEventListener('pointerdown', () => { seeking = true; });
-            pSeek.addEventListener('pointerup',   () => { seeking = false; });
+            pSeek.addEventListener('pointerup', () => { seeking = false; });
             pSeek.addEventListener('input', () => {
                 if (audio.duration) audio.currentTime = (pSeek.value / 100) * audio.duration;
                 pTime.textContent = fmt(audio.currentTime);
