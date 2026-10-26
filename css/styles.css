@@ -39,6 +39,9 @@ img {
 }
 a {
   color: inherit;
+  text-underline-offset: .2rem;
+  text-decoration:underline;
+  text-decoration-color: #c0b4af;
 }
 
 hr {
@@ -49,6 +52,7 @@ hr {
 .layout {
   display: flex;
   min-height: 100vh;
+  justify-content:center;
 }
 .sidebar {
   position: sticky;
@@ -90,10 +94,6 @@ hr {
 .nav a:focus-visible {
   color: var(--sidebar-text);
   background: rgba(255, 255, 255, 0.06);
-}
-.nav a.is-active {
-  color: var(--sidebar-text);
-  background: rgba(194, 78, 29, 0.22);
 }
 
 .mobile-bar {
@@ -186,6 +186,7 @@ h3 {
   max-width: var(--w);
   gap: 1rem;
   width: 100%;
+  flex-wrap: wrap;
 }
 
 .item h3 {
@@ -228,6 +229,7 @@ h3 {
 
 .item .item-end {
     text-align: end;
+    flex:1;
 }
 
 .item .release {
@@ -249,11 +251,21 @@ h3 {
 }
 
 .item .release-btn {
-    flex: 2;
+    flex: 1;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: end;
+    align-items: end;
+ 
+
 }
+
+.item .btn {
+   color: white;
+    font-size:.8rem;
+    font-weight:500;
+
+}
+
 
 .tracks {
 padding: .5rem 0;
@@ -402,4 +414,47 @@ button[type="submit"]:hover {
   .item .img {
     max-width: 300px;
   }
+}
+
+/* Reset the button so it looks like your current .btn div */
+button.btn {
+    font: inherit;
+    color: inherit;
+    border: 0;.item { flex-wrap: wrap; }
+    cursor: pointer;
+}
+
+/* Hide ABOUT while open (the mockup shows LESS at the bottom instead) */
+.item.is-open .release-btn {
+    visibility: hidden;
+}
+
+/* Expandable region: spans every column of the article's grid */
+.details {
+    flex: 0 0 100%;
+    display: grid;
+    grid-template-rows: 0fr;
+    /* transition: grid-template-rows 0.4s ease; */
+}
+.item.is-open .details {
+    grid-template-rows: 1fr;
+}
+.details-inner {
+    overflow: hidden;
+    min-height: 0; /* required for the 0fr collapse to work */
+}
+
+.details-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    padding: 1.5rem 0 1.25rem;
+}
+
+@media (max-width: 700px) {
+    .details-columns { grid-template-columns: 1fr; gap: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .details { transition: none; }
 }

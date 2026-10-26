@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dan Langa — Home</title>
+    <title>Dan Langa — Credits</title>
 
     <!--swap font code here from Google Fonts, then change css file -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,9 +13,69 @@
         href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Reenie+Beanie&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Credit filter styles (can be moved into css/styles.css later) -->
+    <style>
+        .filters {
+            background-color: var(--bg);
+            position: sticky;
+            top: 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: flex-end;
+            column-gap: 8px;
+            width: 100%;
+            max-width: 800px;
+            padding: 0.5rem 0 0.5rem 400px;
+            font-size: .8rem;
+            text-align: right;
+        }
+
+        @media (max-width: 900px) {
+
+            .filters {
+                padding: 0.5rem 0;
+                top:70px
+            }
+ 
+        }
+
+
+        .filters button {
+            all: unset;
+            cursor: pointer;
+            font: inherit;
+            line-height: 1.4;
+        }
+
+        .filters button + button::before {
+            content: "·";
+            display: inline-block;
+            margin-right: 8px;
+            font-weight: 400;
+        }
+
+        .filters button:hover {
+            opacity: .7;
+        }
+
+        .filters button.is-active {
+            font-weight: 700;
+        }
+
+        .filters button:focus-visible {
+            outline: 1px solid currentColor;
+            outline-offset: 2px;
+        }
+
+        .item[hidden] {
+            display: none;
+        }
+    </style>
 </head>
 
-<body data-page="home">
+<body data-page="credits">
     <!--mobile only-->
     <div class="mobile-bar">
         <strong>Dan Langa</strong>
@@ -50,28 +110,26 @@
                     mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh viverra non semper suscipit
                     posuere a pede.</p>
             </header>
-              <article style="background-color: var(--bg); position: sticky; top: 0; width: 100%; max-width: 800px; text-align: right; font-size:.8rem; display: flex; align-items: center;justify-content: flex-end; gap:1rem; margin: 0rem 0">
-              
-                                <p><strong>ALL</strong></p> <p>·</p>
-                    <p>MIXING</p>
-                    <p>·</p>
-                    <p>MASTERING</p> <p>·</p>
-                    <p>ENGINEERING</p> <p>·</p>
 
+            <!-- Filter bar: data-filter values must match the words in each item's data-category -->
+            <nav class="filters" aria-label="Filter credits">
+                <button type="button" data-filter="all" class="is-active" aria-pressed="true">ALL</button>
+                <button type="button" data-filter="mixing" aria-pressed="false">MIXING</button>
+                <button type="button" data-filter="mastering" aria-pressed="false">MASTERING</button>
+                <button type="button" data-filter="engineering" aria-pressed="false">ENGINEERING</button>
+                <button type="button" data-filter="production" aria-pressed="false">PRODUCTION</button>
+                <button type="button" data-filter="Composition" aria-pressed="false">COMPOSITION</button>
+                <button type="button" data-filter="podcast" aria-pressed="false">PODCAST</button>
+                <button type="button" data-filter="film" aria-pressed="false">FILM/TV/VIDEO</button>
+            </nav>
 
-                    <p>PODCAST</p> <p>·</p>
-                    <p>FILM/TV/VIDEO</p>
-           
-            </article>
-
-            <article class="item credits">
+            <article class="item credits" data-category="production engineering mixing">
                 <div class="img">
-                    <img src='./assets/images/blank.png'></img>
+                    <img src="./assets/images/blank.png" alt="">
                 </div>
                 <div class="release">
                     <h3>Dolor sit</h3>
                     <p>2021</p>
-
                 </div>
                 <div class="tracks">
                     <p>▶ Listen</p>
@@ -84,14 +142,13 @@
                 </div>
             </article>
 
-             <article class="item credits">
+            <article class="item credits" data-category="mixing mastering">
                 <div class="img">
-                    <img src='./assets/images/blank.png'></img>
+                    <img src="./assets/images/blank.png" alt="">
                 </div>
                 <div class="release">
                     <h3>Lorem Ipsum</h3>
                     <p>2021</p>
-
                 </div>
                 <div class="tracks">
                     <p>▶ Listen</p>
@@ -100,17 +157,17 @@
                     <a>Bandcamp ↗</a>
                 </div>
                 <div class="item-end">
-                    <p>Producer, Engineer, Mix</p>
+                    <p>Mix, Master</p>
                 </div>
             </article>
-           <article class="item credits">
+
+            <article class="item credits" data-category="Composition production">
                 <div class="img">
-                    <img src='./assets/images/blank.png'></img>
+                    <img src="./assets/images/blank.png" alt="">
                 </div>
                 <div class="release">
                     <h3>Amet</h3>
                     <p>2021</p>
-
                 </div>
                 <div class="tracks">
                     <p>▶ Listen</p>
@@ -119,16 +176,17 @@
                     <a>Bandcamp ↗</a>
                 </div>
                 <div class="item-end">
-                    <p>Producer, Engineer, Mix</p>
+                    <p>Composition, Producer</p>
                 </div>
-            </article><article class="item credits">
+            </article>
+
+            <article class="item credits" data-category="engineering">
                 <div class="img">
-                    <img src='./assets/images/blank.png'></img>
+                    <img src="./assets/images/blank.png" alt="">
                 </div>
                 <div class="release">
                     <h3>Lorem Ipsum</h3>
                     <p>2021</p>
-
                 </div>
                 <div class="tracks">
                     <p>▶ Listen</p>
@@ -137,52 +195,55 @@
                     <a>Bandcamp ↗</a>
                 </div>
                 <div class="item-end">
-                    <p>Producer, Engineer, Mix</p>
+                    <p>Engineer</p>
                 </div>
-            </article><article class="item credits">
+            </article>
+
+            <article class="item credits" data-category="podcast mixing">
                 <div class="img">
-                    <img src='./assets/images/blank.png'></img>
+                    <img src="./assets/images/blank.png" alt="">
                 </div>
                 <div class="release">
                     <h3>Lorem Ipsum</h3>
                     <p>2021</p>
-
                 </div>
                 <div class="tracks">
                     <p>▶ Listen</p>
                 </div>
                 <div class="release-btn">
-                    <a>Bandcamp ↗</a>
+                    <a>Apple Podcasts ↗</a>
                 </div>
                 <div class="item-end">
-                    <p>Producer, Engineer, Mix</p>
+                    <p>Podcast, Mix</p>
                 </div>
-            </article><article class="item credits">
+            </article>
+
+            <article class="item credits" data-category="film">
                 <div class="img">
-                    <img src='./assets/images/blank.png'></img>
+                    <img src="./assets/images/blank.png" alt="">
                 </div>
                 <div class="release">
                     <h3>Lorem Ipsum</h3>
                     <p>2021</p>
-
                 </div>
                 <div class="tracks">
-                    <p>▶ Listen</p>
+                    <p>▶ Watch</p>
                 </div>
                 <div class="release-btn">
-                    <a>Bandcamp ↗</a>
+                    <a>Vimeo ↗</a>
                 </div>
                 <div class="item-end">
-                    <p>Producer, Engineer, Mix</p>
+                    <p>Film/TV/Video</p>
                 </div>
-            </article><article class="item credits">
+            </article>
+
+            <article class="item credits" data-category="mastering">
                 <div class="img">
-                    <img src='./assets/images/blank.png'></img>
+                    <img src="./assets/images/blank.png" alt="">
                 </div>
                 <div class="release">
                     <h3>Lorem Ipsum</h3>
                     <p>2021</p>
-
                 </div>
                 <div class="tracks">
                     <p>▶ Listen</p>
@@ -191,16 +252,17 @@
                     <a>Bandcamp ↗</a>
                 </div>
                 <div class="item-end">
-                    <p>Producer, Engineer, Mix</p>
+                    <p>Master</p>
                 </div>
-            </article><article class="item credits">
+            </article>
+
+            <article class="item credits" data-category="production Composition">
                 <div class="img">
-                    <img src='./assets/images/blank.png'></img>
+                    <img src="./assets/images/blank.png" alt="">
                 </div>
                 <div class="release">
                     <h3>Lorem Ipsum</h3>
                     <p>2021</p>
-
                 </div>
                 <div class="tracks">
                     <p>▶ Listen</p>
@@ -209,16 +271,17 @@
                     <a>Bandcamp ↗</a>
                 </div>
                 <div class="item-end">
-                    <p>Producer, Engineer, Mix</p>
+                    <p>Producer, Composition</p>
                 </div>
-            </article><article class="item credits">
+            </article>
+
+            <article class="item credits" data-category="mixing engineering">
                 <div class="img">
-                    <img src='./assets/images/blank.png'></img>
+                    <img src="./assets/images/blank.png" alt="">
                 </div>
                 <div class="release">
                     <h3>Lorem Ipsum</h3>
                     <p>2021</p>
-
                 </div>
                 <div class="tracks">
                     <p>▶ Listen</p>
@@ -227,52 +290,55 @@
                     <a>Bandcamp ↗</a>
                 </div>
                 <div class="item-end">
-                    <p>Producer, Engineer, Mix</p>
+                    <p>Engineer, Mix</p>
                 </div>
-            </article><article class="item credits">
+            </article>
+
+            <article class="item credits" data-category="podcast engineering">
                 <div class="img">
-                    <img src='./assets/images/blank.png'></img>
+                    <img src="./assets/images/blank.png" alt="">
                 </div>
                 <div class="release">
                     <h3>Lorem Ipsum</h3>
                     <p>2021</p>
-
                 </div>
                 <div class="tracks">
                     <p>▶ Listen</p>
                 </div>
                 <div class="release-btn">
-                    <a>Bandcamp ↗</a>
+                    <a>Apple Podcasts ↗</a>
                 </div>
                 <div class="item-end">
-                    <p>Producer, Engineer, Mix</p>
+                    <p>Podcast, Engineer</p>
                 </div>
-            </article><article class="item credits">
+            </article>
+
+            <article class="item credits" data-category="film mixing">
                 <div class="img">
-                    <img src='./assets/images/blank.png'></img>
+                    <img src="./assets/images/blank.png" alt="">
                 </div>
                 <div class="release">
                     <h3>Lorem Ipsum</h3>
                     <p>2021</p>
-
                 </div>
                 <div class="tracks">
-                    <p>▶ Listen</p>
+                    <p>▶ Watch</p>
                 </div>
                 <div class="release-btn">
-                    <a>Bandcamp ↗</a>
+                    <a>Vimeo ↗</a>
                 </div>
                 <div class="item-end">
-                    <p>Producer, Engineer, Mix</p>
+                    <p>Film/TV/Video, Mix</p>
                 </div>
-            </article><article class="item credits">
+            </article>
+
+            <article class="item credits" data-category="mastering engineering">
                 <div class="img">
-                    <img src='./assets/images/blank.png'></img>
+                    <img src="./assets/images/blank.png" alt="">
                 </div>
                 <div class="release">
                     <h3>Lorem Ipsum</h3>
                     <p>2021</p>
-
                 </div>
                 <div class="tracks">
                     <p>▶ Listen</p>
@@ -281,16 +347,17 @@
                     <a>Bandcamp ↗</a>
                 </div>
                 <div class="item-end">
-                    <p>Producer, Engineer, Mix</p>
+                    <p>Engineer, Master</p>
                 </div>
-            </article><article class="item credits">
+            </article>
+
+            <article class="item credits" data-category="production">
                 <div class="img">
-                    <img src='./assets/images/blank.png'></img>
+                    <img src="./assets/images/blank.png" alt="">
                 </div>
                 <div class="release">
                     <h3>Lorem Ipsum</h3>
                     <p>2021</p>
-
                 </div>
                 <div class="tracks">
                     <p>▶ Listen</p>
@@ -299,49 +366,61 @@
                     <a>Bandcamp ↗</a>
                 </div>
                 <div class="item-end">
-                    <p>Producer, Engineer, Mix</p>
+                    <p>Producer</p>
                 </div>
-            </article><article class="item credits">
+            </article>
+
+            <article class="item credits" data-category="Composition film">
                 <div class="img">
-                    <img src='./assets/images/blank.png'></img>
+                    <img src="./assets/images/blank.png" alt="">
                 </div>
                 <div class="release">
                     <h3>Lorem Ipsum</h3>
                     <p>2021</p>
-
                 </div>
                 <div class="tracks">
-                    <p>▶ Listen</p>
+                    <p>▶ Watch</p>
                 </div>
                 <div class="release-btn">
-                    <a>Bandcamp ↗</a>
+                    <a>Vimeo ↗</a>
                 </div>
                 <div class="item-end">
-                    <p>Producer, Engineer, Mix</p>
-                </div>
-            </article><article class="item credits">
-                <div class="img">
-                    <img src='./assets/images/blank.png'></img>
-                </div>
-                <div class="release">
-                    <h3>Lorem Ipsum</h3>
-                    <p>2021</p>
-
-                </div>
-                <div class="tracks">
-                    <p>▶ Listen</p>
-                </div>
-                <div class="release-btn">
-                    <a>Bandcamp ↗</a>
-                </div>
-                <div class="item-end">
-                    <p>Producer, Engineer, Mix</p>
+                    <p>Composition, Film/TV/Video</p>
                 </div>
             </article>
         </main>
-        </main>
     </div>
+
     <script src="js/nav.js"></script>
+
+    <!-- Credit filter logic (can be moved into js/filters.js later) -->
+    <script>
+        (() => {
+            const bar = document.querySelector('.filters');
+            if (!bar) return;
+            const buttons = bar.querySelectorAll('button[data-filter]');
+            const items = document.querySelectorAll('.item.credits');
+
+            function applyFilter(filter) {
+                items.forEach(item => {
+                    const cats = (item.dataset.category || '').split(/\s+/);
+                    item.hidden = filter !== 'all' && !cats.includes(filter);
+                });
+                buttons.forEach(btn => {
+                    const on = btn.dataset.filter === filter;
+                    btn.classList.toggle('is-active', on);
+                    btn.setAttribute('aria-pressed', on);
+                });
+            }
+
+            bar.addEventListener('click', e => {
+                const btn = e.target.closest('button[data-filter]');
+                if (btn) applyFilter(btn.dataset.filter);
+            });
+
+            applyFilter('all');
+        })();
+    </script>
 </body>
 
 </html>

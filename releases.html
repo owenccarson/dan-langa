@@ -13,8 +13,88 @@
         href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Reenie+Beanie&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-</head>
+    <style>
+        .track-btn {
+            background: none;
+            border: 0;
+            padding: 0;
+            margin-right: .5em;
+            width: 1.5em;
+            text-align: left;
+            font: inherit;
+            color: inherit;
+            cursor: pointer;
+        }
+        .track-btn:focus-visible,
+        .player-btn:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
 
+        /* Sticky bottom player: slides up the first time a track is played */
+        .player {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: .75rem 1.25rem;
+            background: var(--bg, Canvas);
+            color: var(--fg, CanvasText);
+            border-top: 1px solid currentColor;
+            font: inherit;
+            transform: translateY(100%);
+        }
+        .player.is-active { transform: translateY(0); }
+        .player-btn {
+            background: none;
+            border: 1px solid currentColor;
+            border-radius: 50%;
+            width: 2.25rem;
+            height: 2.25rem;
+            flex: none;
+            font: inherit;
+            color: inherit;
+            cursor: pointer;
+        }
+        .player-info {
+            min-width: 0;
+            flex: 0 1 18rem;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.25;
+        }
+        .player-label { font-size: .75em; opacity: .65; text-transform: uppercase; letter-spacing: .05em; }
+        .player-title, .player-release { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .player-release { font-size: .85em; opacity: .75; }
+        .player-seek { flex: 1 1 auto; min-width: 0; accent-color: currentColor; cursor: pointer; }
+        .player-time { flex: none; font-variant-numeric: tabular-nums; font-size: .85em; }
+        body.has-player { padding-bottom: 4.5rem; }
+
+        @media (max-width: 600px) {
+            .player { gap: .6rem; padding: .6rem .75rem; }
+            .player-time { display: none; }
+            .player-info { flex-basis: 8rem; }
+        }
+        @media (prefers-reduced-motion: reduce) { .player { transition: none; } }
+    </style>
+</head>
+<script>
+    document.addEventListener('click', (e) => {
+    const toggle = e.target.closest('[data-toggle]');
+    if (!toggle) return;
+
+    const item = toggle.closest('.item');
+    const aboutBtn = item.querySelector('.release-btn .btn');
+    const details = item.querySelector('.details');
+
+    const isOpen = item.classList.toggle('is-open');
+    aboutBtn.setAttribute('aria-expanded', isOpen);
+    details.inert = !isOpen; // keeps hidden content out of tab order / screen readers
+
+    if (!isOpen) aboutBtn.focus(); // return focus when closing
+});
+</script>
 <body data-page="home">
     <!--mobile only-->
     <div class="mobile-bar">
@@ -49,149 +129,427 @@
                     mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh viverra non semper suscipit
                     posuere a pede.</p>
             </header>
+
+            <!-- Sister in Red / Stilt -->
             <article class="item">
                 <div class="img">
-                    <img src='./assets/images/sister.avif'></img>
+                    <img src="./assets/images/sister.avif" alt="Sister in Red / Stilt cover">
                 </div>
                 <div class="release">
                     <h3>Sister in Red / Stilt</h3>
                     <p>2021</p>
                     <div class="tracks">
-                        <p>▶ Sister in Red</p>
-                        <p>▶ Stilt</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/sister-in-red.mp3" data-title="Sister in Red" aria-label="Play Sister in Red">▶</button> Sister in Red</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/stilt.mp3" data-title="Stilt" aria-label="Play Stilt">▶</button> Stilt</p>
                     </div>
                 </div>
+                <a href="#">Download / Stream ↗</a>
                 <div class="release-btn">
-                    <div class="btn">ABOUT</div>
+                    <button type="button" class="btn" data-toggle aria-expanded="false">ABOUT</button>
                 </div>
-                <a>Download / Stream ↗</a>
+
+                <!-- expandable section -->
+                <div class="details" inert>
+                    <div class="details-inner">
+                        <div class="details-columns">
+                            <div class="col">
+                                <p>I'm extremely excited to be releasing a double-sided single featuring music from a brilliant short film by Elle Rinaldi and a track that shows the lineage of how this score came to be.</p>
+                                <br>
+                                <p>Elle and I met as she was beginning the edit of this film, and it was such a joy to get to work on the score after so many amazing conversations we shared about music and sound at the residency where we were working.</p>
+                                <br>
+                                <p>On the A-side, ‘Sister in Red’ is an arrangement of the main themes from the score; a score that began as a completely different track, collaborating with my friends Juan Herrera and Isabel Ong. This score began as ‘Stilt,’ the B-side of the release, an open score piece for prepared vibraphone and violin. The final element was a fixed electronics track built entirely from bird sounds Juan shared with me and became the throughline between Stilt and the score.</p>
+                                <br>
+                                <p>As part of the release, Elle and I have made a poster from the film artwork that we are putting up for sale as a fundraiser for The Sameer Project: Mass Displacement Response Campaign. We will be selling these posters during the month of October, and all proceeds from both the music and poster sales will be donated to The Sameer Project in support of their emergency medical camps in Gaza.</p>
+                            </div>
+                            <div class="col">
+                                <p>Thanks for listening to these tracks made with people I admire so much and supporting this cause that is so important right now.<br><br>
+                                    <br>
+                                    released October 1, 2025
+                                    <br><br>
+                                    composed, produced, mixed, and mastered by Dan Langa
+                                    <br><br>
+                                    'Sister in Red' was composed for the short film written and directed by Elle Rinaldi
+                                    <br><br>
+                                    'Stilt' recorded in Buffalo, NY, March 2025
+                                    Isabel Ong – Violin
+                                    Juan Herrera – Percussion
+                                    license
+                                    all rights reserved</p>
+                                <br>
+                                <p><a href="#">'Sister in Red' Poster ($15) ↗</a></p>
+                                <br>
+                                <div style="display:flex; justify-content: end;"><button type="button" class="btn" data-toggle>LESS</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </article>
+
+            <!-- War of Attrition -->
             <article class="item">
                 <div class="img">
-                    <img src='./assets/images/war.avif'></img>
+                    <img src="./assets/images/war.avif" alt="War of Attrition (feat. Hauzu) cover">
                 </div>
                 <div class="release">
                     <h3>War of Attrition (feat. Hauzu)</h3>
                     <p>2024</p>
                     <div class="tracks">
-                        <p>▶ War of Attrition feat. Hauzu</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/war-of-attrition-feat-hauzu.mp3" data-title="War of Attrition feat. Hauzu" aria-label="Play War of Attrition feat. Hauzu">▶</button> War of Attrition feat. Hauzu</p>
                     </div>
                 </div>
+                <a href="#">Download / Stream ↗</a>
                 <div class="release-btn">
-                    <div class="btn">ABOUT</div>
+                    <button type="button" class="btn" data-toggle aria-expanded="false">ABOUT</button>
                 </div>
-                <a>Download / Stream ↗</a>
 
+                <div class="details" inert>
+                    <div class="details-inner">
+                        <div class="details-columns">
+                            <div class="col">
+                                <p>About text for War of Attrition (feat. Hauzu) goes here.</p>
+                            </div>
+                            <div class="col">
+                                <p>released 2024
+                                    <br><br>
+                                    credits go here
+                                    <br><br>
+                                    license
+                                    all rights reserved</p>
+                                <br>
+                                <div style="display:flex; justify-content: end;"><button type="button" class="btn" data-toggle>LESS</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </article>
+
+            <!-- I'm Alright, I'm OK (Reworks) -->
             <article class="item">
                 <div class="img">
-                    <img src='./assets/images/alright.avif'></img>
+                    <img src="./assets/images/alright.avif" alt="I'm Alright, I'm OK (Reworks) cover">
                 </div>
                 <div class="release">
                     <h3>I'm Alright, I'm OK (Reworks)</h3>
                     <p>2024</p>
                     <div class="tracks">
-                        <p>▶ shell (adlai remix)</p>
-                        <p>▶ mayhap (Fynn Michlin remix)</p>
-                        <p>▶ shell (kelz remix)</p>
-                        <p>▶ want of a bird (Nyokabi Kariũki remix)</p>
-
+                        <p><button type="button" class="track-btn" data-src="assets/audio/shell-adlai-remix.mp3" data-title="shell (adlai remix)" aria-label="Play shell (adlai remix)">▶</button> shell (adlai remix)</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/mayhap-fynn-michlin-remix.mp3" data-title="mayhap (Fynn Michlin remix)" aria-label="Play mayhap (Fynn Michlin remix)">▶</button> mayhap (Fynn Michlin remix)</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/shell-kelz-remix.mp3" data-title="shell (kelz remix)" aria-label="Play shell (kelz remix)">▶</button> shell (kelz remix)</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/want-of-a-bird-nyokabi-kariuki-remix.mp3" data-title="want of a bird (Nyokabi Kariũki remix)" aria-label="Play want of a bird (Nyokabi Kariũki remix)">▶</button> want of a bird (Nyokabi Kariũki remix)</p>
                     </div>
                 </div>
+                <a href="#">Download / Stream ↗</a>
                 <div class="release-btn">
-                    <div class="btn">ABOUT</div>
+                    <button type="button" class="btn" data-toggle aria-expanded="false">ABOUT</button>
                 </div>
-                <a>Download / Stream ↗</a>
+
+                <div class="details" inert>
+                    <div class="details-inner">
+                        <div class="details-columns">
+                            <div class="col">
+                                <p>About text for I'm Alright, I'm OK (Reworks) goes here.</p>
+                            </div>
+                            <div class="col">
+                                <p>released 2024
+                                    <br><br>
+                                    credits go here
+                                    <br><br>
+                                    license
+                                    all rights reserved</p>
+                                <br>
+                                <div style="display:flex; justify-content: end;"><button type="button" class="btn" data-toggle>LESS</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </article>
+
+            <!-- I'm Alright, I'm OK -->
             <article class="item">
                 <div class="img">
-                    <img src='assets/images/a1884584814_1x1_700.avif'></img>
+                    <img src="assets/images/a1884584814_1x1_700.avif" alt="I'm Alright, I'm OK cover">
                 </div>
                 <div class="release">
                     <h3>I'm Alright, I'm OK</h3>
                     <p>2024</p>
                     <div class="tracks">
-                        <p><button>▶</button> intro</p>
-                        <p>▶ mayhap</p>
-                        <p>▶ structure 2</p>
-                        <p>▶ speak (feat. Stratøs)</p>
-                        <p>▶ interlude</p>
-                        <p>▶ shell</p>
-                        <p>▶ whim</p>
-                        <p>▶ nether</p>
-                        <p>▶ bloody rainbow (feat Sabeth Perez)</p>
-                        <p>▶ presage</p>
-                        <p>▶ want of a bird (verily)</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/im_alright_2/01 - Dan Langa - intro.mp3" data-title="intro" aria-label="Play intro">▶</button> intro</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/im_alright_2/02 - Dan Langa - mayhap.mp3" data-title="mayhap" aria-label="Play mayhap">▶</button> mayhap</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/im_alright_2/03 - Dan Langa - structure 2.mp3" data-title="structure 2" aria-label="Play structure 2">▶</button> structure 2</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/speak-feat-strats.mp3" data-title="speak (feat. Stratøs)" aria-label="Play speak (feat. Stratøs)">▶</button> speak (feat. Stratøs)</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/interlude.mp3" data-title="interlude" aria-label="Play interlude">▶</button> interlude</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/shell.mp3" data-title="shell" aria-label="Play shell">▶</button> shell</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/whim.mp3" data-title="whim" aria-label="Play whim">▶</button> whim</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/nether.mp3" data-title="nether" aria-label="Play nether">▶</button> nether</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/bloody-rainbow-feat-sabeth-perez.mp3" data-title="bloody rainbow (feat Sabeth Perez)" aria-label="Play bloody rainbow (feat Sabeth Perez)">▶</button> bloody rainbow (feat Sabeth Perez)</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/presage.mp3" data-title="presage" aria-label="Play presage">▶</button> presage</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/want-of-a-bird-verily.mp3" data-title="want of a bird (verily)" aria-label="Play want of a bird (verily)">▶</button> want of a bird (verily)</p>
                     </div>
                 </div>
+                <a href="#">Download / Stream ↗</a>
                 <div class="release-btn">
-                    <div class="btn">ABOUT</div>
+                    <button type="button" class="btn" data-toggle aria-expanded="false">ABOUT</button>
                 </div>
-                <a>Download / Stream ↗</a>
+
+                <div class="details" inert>
+                    <div class="details-inner">
+                        <div class="details-columns">
+                            <div class="col">
+                                <p>About text for I'm Alright, I'm OK goes here.</p>
+                            </div>
+                            <div class="col">
+                                <p>released 2024
+                                    <br><br>
+                                    credits go here
+                                    <br><br>
+                                    license
+                                    all rights reserved</p>
+                                <br>
+                                <div style="display:flex; justify-content: end;"><button type="button" class="btn" data-toggle>LESS</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </article>
+
+            <!-- Ochre -->
             <article class="item">
                 <div class="img">
-                    <img src='./assets/images/ochre.avif'></img>
+                    <img src="./assets/images/ochre.avif" alt="Ochre cover">
                 </div>
                 <div class="release">
                     <h3>Ochre</h3>
                     <p>2024</p>
                     <div class="tracks">
-                        <p>▶ shell (adlai remix)</p>
-                        <p>▶ mayhap (Fynn Michlin remix)</p>
-                        <p>▶ shell (kelz remix)</p>
-                        <p>▶ want of a bird (Nyokabi Kariũki remix)</p>
-
+                        <p><button type="button" class="track-btn" data-src="assets/audio/shell-adlai-remix.mp3" data-title="shell (adlai remix)" aria-label="Play shell (adlai remix)">▶</button> shell (adlai remix)</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/mayhap-fynn-michlin-remix.mp3" data-title="mayhap (Fynn Michlin remix)" aria-label="Play mayhap (Fynn Michlin remix)">▶</button> mayhap (Fynn Michlin remix)</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/shell-kelz-remix.mp3" data-title="shell (kelz remix)" aria-label="Play shell (kelz remix)">▶</button> shell (kelz remix)</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/want-of-a-bird-nyokabi-kariuki-remix.mp3" data-title="want of a bird (Nyokabi Kariũki remix)" aria-label="Play want of a bird (Nyokabi Kariũki remix)">▶</button> want of a bird (Nyokabi Kariũki remix)</p>
                     </div>
                 </div>
+                <a href="#">Download / Stream ↗</a>
                 <div class="release-btn">
-                    <div class="btn">ABOUT</div>
+                    <button type="button" class="btn" data-toggle aria-expanded="false">ABOUT</button>
                 </div>
-                <a>Download / Stream ↗</a>
+
+                <div class="details" inert>
+                    <div class="details-inner">
+                        <div class="details-columns">
+                            <div class="col">
+                                <p>About text for Ochre goes here.</p>
+                            </div>
+                            <div class="col">
+                                <p>released 2024
+                                    <br><br>
+                                    credits go here
+                                    <br><br>
+                                    license
+                                    all rights reserved</p>
+                                <br>
+                                <div style="display:flex; justify-content: end;"><button type="button" class="btn" data-toggle>LESS</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </article>
+
+            <!-- Swell -->
             <article class="item">
                 <div class="img">
-                    <img src='./assets/images/swell.avif'></img>
+                    <img src="./assets/images/swell.avif" alt="Swell (feat. Sam Johnson) cover">
                 </div>
                 <div class="release">
                     <h3>Swell (feat. Sam Johnson)</h3>
                     <p>2024</p>
                     <div class="tracks">
-                        <p>▶ shell (adlai remix)</p>
-                        <p>▶ mayhap (Fynn Michlin remix)</p>
-                        <p>▶ shell (kelz remix)</p>
-                        <p>▶ want of a bird (Nyokabi Kariũki remix)</p>
-
+                        <p><button type="button" class="track-btn" data-src="assets/audio/shell-adlai-remix.mp3" data-title="shell (adlai remix)" aria-label="Play shell (adlai remix)">▶</button> shell (adlai remix)</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/mayhap-fynn-michlin-remix.mp3" data-title="mayhap (Fynn Michlin remix)" aria-label="Play mayhap (Fynn Michlin remix)">▶</button> mayhap (Fynn Michlin remix)</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/shell-kelz-remix.mp3" data-title="shell (kelz remix)" aria-label="Play shell (kelz remix)">▶</button> shell (kelz remix)</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/want-of-a-bird-nyokabi-kariuki-remix.mp3" data-title="want of a bird (Nyokabi Kariũki remix)" aria-label="Play want of a bird (Nyokabi Kariũki remix)">▶</button> want of a bird (Nyokabi Kariũki remix)</p>
                     </div>
                 </div>
+                <a href="#">Download / Stream ↗</a>
                 <div class="release-btn">
-                    <div class="btn">ABOUT</div>
+                    <button type="button" class="btn" data-toggle aria-expanded="false">ABOUT</button>
                 </div>
-                <a>Download / Stream ↗</a>
+
+                <div class="details" inert>
+                    <div class="details-inner">
+                        <div class="details-columns">
+                            <div class="col">
+                                <p>About text for Swell (feat. Sam Johnson) goes here.</p>
+                            </div>
+                            <div class="col">
+                                <p>released 2024
+                                    <br><br>
+                                    credits go here
+                                    <br><br>
+                                    license
+                                    all rights reserved</p>
+                                <br>
+                                <div style="display:flex; justify-content: end;"><button type="button" class="btn" data-toggle>LESS</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </article>
+
+            <!-- 5th & William -->
             <article class="item">
                 <div class="img">
-                    <img src='./assets/images/5th.avif'></img>
+                    <img src="./assets/images/5th.avif" alt="5th & William cover">
                 </div>
                 <div class="release">
                     <h3>5th & William</h3>
                     <p>2024</p>
                     <div class="tracks">
-                        <p>▶ shell (adlai remix)</p>
-                        <p>▶ mayhap (Fynn Michlin remix)</p>
-                        <p>▶ shell (kelz remix)</p>
-                        <p>▶ want of a bird (Nyokabi Kariũki remix)</p>
-
+                        <p><button type="button" class="track-btn" data-src="assets/audio/shell-adlai-remix.mp3" data-title="shell (adlai remix)" aria-label="Play shell (adlai remix)">▶</button> shell (adlai remix)</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/mayhap-fynn-michlin-remix.mp3" data-title="mayhap (Fynn Michlin remix)" aria-label="Play mayhap (Fynn Michlin remix)">▶</button> mayhap (Fynn Michlin remix)</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/shell-kelz-remix.mp3" data-title="shell (kelz remix)" aria-label="Play shell (kelz remix)">▶</button> shell (kelz remix)</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/want-of-a-bird-nyokabi-kariuki-remix.mp3" data-title="want of a bird (Nyokabi Kariũki remix)" aria-label="Play want of a bird (Nyokabi Kariũki remix)">▶</button> want of a bird (Nyokabi Kariũki remix)</p>
                     </div>
                 </div>
+                <a href="#">Download / Stream ↗</a>
                 <div class="release-btn">
-                    <div class="btn">ABOUT</div>
+                    <button type="button" class="btn" data-toggle aria-expanded="false">ABOUT</button>
                 </div>
-                <a>Download / Stream ↗</a>
+
+                <div class="details" inert>
+                    <div class="details-inner">
+                        <div class="details-columns">
+                            <div class="col">
+                                <p>About text for 5th &amp; William goes here.</p>
+                            </div>
+                            <div class="col">
+                                <p>released 2024
+                                    <br><br>
+                                    credits go here
+                                    <br><br>
+                                    license
+                                    all rights reserved</p>
+                                <br>
+                                <div style="display:flex; justify-content: end;"><button type="button" class="btn" data-toggle>LESS</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </article>
         </main>
-        </main>
     </div>
+    <!-- Sticky audio player: hidden until a track is played -->
+    <div class="player" id="player" role="region" aria-label="Audio player" inert>
+        <button type="button" class="player-btn" id="player-toggle" aria-label="Play">▶</button>
+        <div class="player-info" aria-live="polite">
+            <span class="player-label">Now playing</span>
+            <span class="player-title" id="player-title"></span>
+            <span class="player-release" id="player-release"></span>
+        </div>
+        <span class="player-time" id="player-time">0:00</span>
+        <input type="range" class="player-seek" id="player-seek" min="0" max="100" step="0.1" value="0" aria-label="Seek">
+        <span class="player-time" id="player-duration">0:00</span>
+    </div>
+    <script>
+        // One shared audio element drives both the track buttons and the sticky player.
+        (() => {
+            const audio = new Audio();
+            audio.preload = 'none';
+            const PLAY = '▶', PAUSE = '❚❚';
+
+            const player   = document.getElementById('player');
+            const pToggle  = document.getElementById('player-toggle');
+            const pTitle   = document.getElementById('player-title');
+            const pRelease = document.getElementById('player-release');
+            const pSeek    = document.getElementById('player-seek');
+            const pTime    = document.getElementById('player-time');
+            const pDur     = document.getElementById('player-duration');
+
+            let current = null;   // the track button that is loaded
+            let seeking = false;
+
+            const fmt = (t) => {
+                if (!isFinite(t)) return '0:00';
+                const m = Math.floor(t / 60), s = Math.floor(t % 60);
+                return m + ':' + String(s).padStart(2, '0');
+            };
+
+            const setBtn = (btn, playing) => {
+                btn.textContent = playing ? PAUSE : PLAY;
+                btn.setAttribute('aria-label', (playing ? 'Pause ' : 'Play ') + btn.dataset.title);
+                btn.classList.toggle('is-playing', playing);
+            };
+
+            // Keep every control in step with the real audio state
+            const sync = () => {
+                const playing = !audio.paused && !audio.ended;
+                if (current) setBtn(current, playing);
+                pToggle.textContent = playing ? PAUSE : PLAY;
+                pToggle.setAttribute('aria-label', playing ? 'Pause' : 'Play');
+            };
+
+            const showPlayer = () => {
+                player.inert = false;
+                player.classList.add('is-active');
+                document.body.classList.add('has-player');
+            };
+
+            const play = () => audio.play().catch(() => {
+                pTitle.textContent = 'Couldn\u2019t load ' + (current ? current.dataset.title : 'track');
+                sync();
+            });
+
+            document.addEventListener('click', (e) => {
+                const btn = e.target.closest('.track-btn');
+                if (!btn) return;
+
+                // Same track: toggle pause / resume
+                if (btn === current) {
+                    audio.paused ? play() : audio.pause();
+                    return;
+                }
+
+                // Different track: end the current one, start the new one
+                if (current) {
+                    audio.pause();
+                    audio.currentTime = 0;
+                    setBtn(current, false);
+                }
+                current = btn;
+                audio.src = btn.dataset.src;
+                pTitle.textContent = btn.dataset.title;
+                const rel = btn.closest('.item')?.querySelector('h3');
+                pRelease.textContent = rel ? rel.textContent : '';
+                pSeek.value = 0;
+                pTime.textContent = '0:00';
+                pDur.textContent = '0:00';
+                showPlayer();
+                play();
+            });
+
+            // Player bar controls
+            pToggle.addEventListener('click', () => {
+                if (!current) return;
+                audio.paused ? play() : audio.pause();
+            });
+
+            pSeek.addEventListener('pointerdown', () => { seeking = true; });
+            pSeek.addEventListener('pointerup',   () => { seeking = false; });
+            pSeek.addEventListener('input', () => {
+                if (audio.duration) audio.currentTime = (pSeek.value / 100) * audio.duration;
+                pTime.textContent = fmt(audio.currentTime);
+            });
+
+            // Audio events
+            audio.addEventListener('play', sync);
+            audio.addEventListener('pause', sync);
+            audio.addEventListener('ended', sync);
+            audio.addEventListener('error', sync);
+            audio.addEventListener('loadedmetadata', () => { pDur.textContent = fmt(audio.duration); });
+            audio.addEventListener('timeupdate', () => {
+                pTime.textContent = fmt(audio.currentTime);
+                if (!seeking && audio.duration) pSeek.value = (audio.currentTime / audio.duration) * 100;
+            });
+        })();
+    </script>
     <script src="js/nav.js"></script>
 </body>
 
