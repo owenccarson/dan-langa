@@ -165,7 +165,7 @@ h3 {
     font-size: .8rem;
   color: var(--muted);
   margin: 0;
-  max-width: 62ch;
+  align-self: flex-end;
 }
 
 .eyebrow {
@@ -286,7 +286,7 @@ gap:4px
 
 .date {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 2fr 1fr 1fr 1fr;
   grid-template-rows: auto; /* or a specific height */
 }
 
@@ -374,8 +374,20 @@ button[type="submit"]:hover {
   background: var(--accent);
 }
 
+.about {
+  display: flex;
+  flex-direction:row;
+  gap: 2rem;
+}
+
 @media (max-width: 900px) {
  
+  .about {
+
+  flex-direction:column;
+
+}
+
   .mobile-bar {
     display: flex;
   }
@@ -457,6 +469,8 @@ button.btn {
     margin-top: 4px;
 }
 
+
+
 .program-note summary {
     cursor: pointer;
     list-style: none;
@@ -487,3 +501,4 @@ summary {
     text-decoration-color: #c0b4af;
     user-select: none
 }
+
