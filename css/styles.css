@@ -138,7 +138,7 @@ hr {
 .hero {
   width: 100%;
   max-width: var(--w);
-  margin-bottom: 48px;
+  margin-bottom: 24px;
 }
 
 h1,
@@ -206,6 +206,12 @@ h3 {
   font-family: var(--font-sans);
   font-size: .8rem;
 }
+
+.projects a {
+  flex: 1;
+}
+
+
 
 .credits a {
     text-align: center;
@@ -460,4 +466,14 @@ button.btn {
 
 @media (prefers-reduced-motion: reduce) {
     .details { transition: none; }
+}
+
+.article-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.article-link:hover {
+  cursor: pointer;
 }
