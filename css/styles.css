@@ -249,7 +249,6 @@ h3 {
 
 .item .composition h3{
     font-size: 1rem;
-    margin-bottom: 0;
 }
 
 .item .release p{
@@ -282,7 +281,7 @@ gap:4px
 }
 
 .composition {
-    flex: 1
+    flex: 5
 }
 
 .date {
@@ -297,7 +296,6 @@ gap:4px
 
 .program-note {
     flex: 3;
-    margin: 0 2rem;
 }
 .stack {
   display: grid;
@@ -375,20 +373,7 @@ button[type="submit"] {
 button[type="submit"]:hover {
   background: var(--accent);
 }
-.faq details {
-  background: var(--bg-item);
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 14px 16px;
-}
-.faq summary {
-  cursor: pointer;
-  font-weight: 600;
-}
-.faq p {
-  margin: 10px 0 0;
-  color: var(--muted);
-}
+
 @media (max-width: 900px) {
  
   .mobile-bar {
@@ -468,12 +453,37 @@ button.btn {
     .details { transition: none; }
 }
 
-.article-link {
-  display: block;
-  color: inherit;
-  text-decoration: none;
+.program-note {
+    margin-top: 4px;
 }
 
-.article-link:hover {
-  cursor: pointer;
+.program-note summary {
+    cursor: pointer;
+    list-style: none;
+    display: inline-block;
+}
+
+.program-note summary::-webkit-details-marker {
+    display: none;
+}
+
+.program-note summary::after {
+    content: " +";
+}
+
+.program-note[open] summary::after {
+    content: " −";
+}
+
+.program-note p {
+    margin-top: 10px;
+}
+
+summary {
+  font-size: .8rem;
+  color: var(--muted);
+     text-underline-offset: .2rem;
+    text-decoration: underline;
+    text-decoration-color: #c0b4af;
+    user-select: none
 }
