@@ -15,21 +15,50 @@
     <link rel="stylesheet" href="css/styles.css">
     <style>
         .track-btn {
-            background: none;
-            border: 0;
-            padding: 0;
-            width: 1.5em;
-            text-align: left;
-            font: inherit;
-            color: inherit;
-            cursor: pointer;
+               background: #78716d;
+    border: 0;
+    padding: 0px 4px 0px 5px;
+    width: 1.5em;
+    text-align: left;
+    font: inherit;
+    color: #ffffff;
+    border-radius: 4px;
+    cursor: pointer;
         }
+
+        /* Track rows: button stays left, title wraps to its right */
+.tracks p {
+    display: flex;
+    align-items: flex-start;
+    gap: .5em;
+    width: fit-content;
+    max-width: 100%;
+    padding-right: .5em;
+    border-radius: 4px;
+}
+
+.track-btn {
+    flex: none; /* don't let the button shrink or get pushed */
+}
+
+/* Playing state: dark background covers the whole row, text turns white */
+.tracks p:has(.track-btn.is-playing) {
+    background: #78716d; /* same as the button; swap for a darker shade if you like */
+    color: #fff;
+}
 
         .track-btn:focus-visible,
         .player-btn:focus-visible {
             outline: 2px solid currentColor;
             outline-offset: 2px;
         }
+
+        .track-btn.is-playing {
+    padding-top: 2.5px;
+    padding-bottom: 0px; /* pushes the ❚❚ glyph up by roughly this amount */
+    line-height: 1;
+    padding-left:4px
+}
 
         /* Sticky bottom player: slides up the first time a track is played */
         .player {
@@ -137,16 +166,19 @@
         if (!toggle) return;
 
         const item = toggle.closest('.item');
-        const aboutBtn = item.querySelector('.release-btn .btn');
         const details = item.querySelector('.details');
 
         const isOpen = item.classList.toggle('is-open');
-        aboutBtn.setAttribute('aria-expanded', isOpen);
-        details.inert = !isOpen; // keeps hidden content out of tab order / screen readers
-
-        if (!isOpen) aboutBtn.focus(); // return focus when closing
+        toggle.setAttribute('aria-expanded', isOpen);
+        details.inert = !isOpen;
     });
 </script>
+<style>
+    .item {
+        padding: 1rem 0px 0px 0px;
+
+    }
+</style>
 
 <body data-page="home">
     <!--mobile only-->
@@ -186,7 +218,7 @@
                 </div>
                 <div class="release">
                     <h3>Sister in Red / Stilt</h3>
-                    <p>2021</p>
+                    <p>2025</p>
                     <div class="tracks">
                         <p><button type="button" class="track-btn" data-src="assets/audio/sister-in-red.mp3"
                                 data-title="Sister in Red" aria-label="Play Sister in Red">▶</button> Sister in Red</p>
@@ -196,7 +228,7 @@
                 </div>
                 <a target="_blank" href="https://danlanga.bandcamp.com/album/sister-in-red-stilt">Bandcamp ↗</a>
                 <div class="release-btn">
-                    <button type="button" class="btn" data-toggle aria-expanded="false">ABOUT</button>
+                   <button type="button" class="btn about-btn" data-toggle aria-expanded="false">About</button>
                 </div>
 
                 <!-- expandable section -->
@@ -246,8 +278,7 @@
                                         href="https://danlanga.bandcamp.com/merch/sister-in-red-poster">'Sister in Red'
                                         Poster ($15) ↗</a></p>
                                 <br>
-                                <div style="display:flex; justify-content: end;"><button type="button" class="btn"
-                                        data-toggle>COLLAPSE</button></div>
+                       
                             </div>
                         </div>
                     </div>
@@ -272,7 +303,7 @@
                 </div>
                 <a target="_blank" href="https://cmntxrecords.bandcamp.com/album/all-semantics-iii">Bandcamp ↗</a>
                 <div class="release-btn">
-                    <button type="button" class="btn" data-toggle aria-expanded="false">ABOUT</button>
+                    <button type="button" class="btn about-btn" data-toggle aria-expanded="false">About</button>
                 </div>
 
                 <div class="details" inert>
@@ -290,8 +321,7 @@
                             </div>
                             <div class="col">
 
-                                <div style="display:flex; justify-content: end;"><button type="button" class="btn"
-                                        data-toggle>COLLAPSE</button></div>
+                       
                             </div>
                         </div>
                     </div>
@@ -326,7 +356,7 @@
                 <a target="_blank" href="https://linktr.ee/danlanga?lt_utm_source=lt_admin_share_link#379704105">Buy /
                     Stream ↗</a>
                 <div class="release-btn">
-                    <button type="button" class="btn" data-toggle aria-expanded="false">ABOUT</button>
+                    <button type="button" class="btn about-btn" data-toggle aria-expanded="false">About</button>
                 </div>
 
                 <div class="details" inert>
@@ -357,8 +387,7 @@
                                 </p>
                                 </p>
                                 <br>
-                                <div style="display:flex; justify-content: end;"><button type="button" class="btn"
-                                        data-toggle>COLLAPSE</button></div>
+                       
                             </div>
                         </div>
                     </div>
@@ -372,7 +401,7 @@
                 </div>
                 <div class="release">
                     <h3>I'm Alright, I'm OK</h3>
-                    <p>2024</p>
+                    <p>2022</p>
                     <div class="tracks">
                         <p><button type="button" class="track-btn"
                                 data-src="assets/audio/im_alright_2/01 - Dan Langa - intro.mp3" data-title="intro"
@@ -408,7 +437,7 @@
                 </div>
                 <a target="_blank" href="https://danlanga.bandcamp.com/album/im-alright-im-ok">Bandcamp ↗</a>
                 <div class="release-btn">
-                    <button type="button" class="btn" data-toggle aria-expanded="false">ABOUT</button>
+                    <button type="button" class="btn about-btn" data-toggle aria-expanded="false">About</button>
                 </div>
 
                 <div class="details" inert>
@@ -422,7 +451,7 @@
                                     Massachusetts-based artist employs detailed texture and sweeping layers to make
                                     music that meditates on the ups and downs of his own life over the last two years.
                                     In the process, he offers us a place to ponder our own experiences through music.
-<br><br>
+                                    <br><br>
                                     I’m Alright, I’m OK, Langa’s debut album, employs his skills as both a producer and
                                     composer. Langa has extensive experience in composition, working alongside film
                                     composers and studying with composers like Julia Wolfe and Robert Honstein at New
@@ -435,7 +464,7 @@
                                     field recordings from moments in Langa’s life with electronics and acoustic solos by
                                     guitarist Evan O. Adams, drummer Josh Harmon, violinist Isabel Ong, vocalist Sabeth
                                     Perez, and saxophonist Stratøs.
-<br><br>
+                                    <br><br>
                                     Throughout I’m Alright, I’m OK, a lo-fi quality cloaks every melody, serving as a
                                     vehicle for thinking about the past. Many tracks on the album unite small, personal
                                     memories with expansive melodies that balance darkness and lightness in gentle
@@ -445,7 +474,8 @@
                                     recording is abstracted, and the drones Langa forms bloom from a gravelly crunch
                                     into a rainbow of vibrant colors. It’s not about the specificity of the memory, but
                                     rather how it feels to remember it.
-<br><br>Those moments of ambiguous warmth morph into icier atmospheres and back again as I’m
+                                    <br><br>Those moments of ambiguous warmth morph into icier atmospheres and back
+                                    again as I’m
                                     Alright, I’m OK continues, highlighting the dichotomy between good moments and bad
                                     ones—and how you might need one to get to the other. The only cover on the album, of
                                     Daniel Johnston’s “bloody rainbow,” hammers home this idea, a ballad that blooms
@@ -455,8 +485,8 @@
                                     rippling track with slowed-down, chant-like vocals and watery gurgles. In these
                                     constant shifts, Langa illuminates how uncertainty teeters, never fully dark nor
                                     fully bright.
-<br><br>
-                                    </p>
+                                    <br><br>
+                                </p>
                             </div>
                             <div class="col">
                                 <p>
@@ -466,35 +496,39 @@
                                     his own experiences over the past couple of years. Yet in the delicate balance he
                                     strikes, we’re able to forge our own connections, joining together in reflection.–
                                     Vanessa Ague<br><br><strong>Credits</strong>
-<br>
-All songs written, produced, and performed by Dan Langa © 2022 Tree Town Music Publishing (ASCAP)
-<br><br>
-except:
-<br><br>
-Track 9 – "bloody rainbow" Music and Lyrics by Daniel Johnston © 2000 Eternal Yip Eye Music (BMI)
-<br><br>
-Additional Writing By:
-Stratøs (4)
-<br><br>
-Additional Performances By:
-Evan O. Adams - guitar (9)
-Josh Harmon - drums (4, 11)
-Isabel Ong - violin (9)
-Sabeth Perez - vocals (5, 7, 9)
-Stratøs (4)
-Mix by Dan Langa in Northampton, MA
-Mastered by Toshi Tsuruoka at Ecotone Lab
-<br><br>
-Liner Notes by Vanessa Ague
-Art and Design by Luca Civita & Justin Cook
-<br><br><strong>Music Videos by Justin Cook & Luca Civita</strong><br>
-<a target="_blank" href="https://www.youtube.com/watch?v=lzacA2sREJc">speak (feat. Stratøs)</a><br>
-<a target="_blank" href="https://www.youtube.com/watch?v=81fyGBm-Zug">want of a bird (verily)</a><br>
-<a target="_blank" href="https://www.youtube.com/watch?v=1MiI4AKHJjk">structure 2</a>
+                                    <br>
+                                    All songs written, produced, and performed by Dan Langa © 2022 Tree Town Music
+                                    Publishing (ASCAP)
+                                    <br><br>
+                                    except:
+                                    <br><br>
+                                    Track 9 – "bloody rainbow" Music and Lyrics by Daniel Johnston © 2000 Eternal Yip
+                                    Eye Music (BMI)
+                                    <br><br>
+                                    Additional Writing By:
+                                    Stratøs (4)
+                                    <br><br>
+                                    Additional Performances By:
+                                    Evan O. Adams - guitar (9)
+                                    Josh Harmon - drums (4, 11)
+                                    Isabel Ong - violin (9)
+                                    Sabeth Perez - vocals (5, 7, 9)
+                                    Stratøs (4)
+                                    Mix by Dan Langa in Northampton, MA
+                                    Mastered by Toshi Tsuruoka at Ecotone Lab
+                                    <br><br>
+                                    Liner Notes by Vanessa Ague
+                                    Art and Design by Luca Civita & Justin Cook
+                                    <br><br><strong>Music Videos by Justin Cook & Luca Civita</strong><br>
+                                    <a target="_blank" href="https://www.youtube.com/watch?v=lzacA2sREJc">speak (feat.
+                                        Stratøs)</a><br>
+                                    <a target="_blank" href="https://www.youtube.com/watch?v=81fyGBm-Zug">want of a bird
+                                        (verily)</a><br>
+                                    <a target="_blank" href="https://www.youtube.com/watch?v=1MiI4AKHJjk">structure
+                                        2</a>
                                 </p>
                                 <br>
-                                <div style="display:flex; justify-content: end;"><button type="button" class="btn"
-                                        data-toggle>COLLAPSE</button></div>
+                       
                             </div>
                         </div>
                     </div>
@@ -508,15 +542,17 @@ Art and Design by Luca Civita & Justin Cook
                 </div>
                 <div class="release">
                     <h3>Ochre</h3>
-                    <p>2024</p>
+                    <p>2021</p>
                     <div class="tracks">
                         <p><button type="button" class="track-btn" data-src="assets/audio/shell-adlai-remix.mp3"
-                                data-title="shell (adlai remix)" aria-label="Play shell (adlai remix)">▶</button>Ochre</p>
+                                data-title="shell (adlai remix)" aria-label="Play shell (adlai remix)">▶</button>Ochre
+                        </p>
                     </div>
                 </div>
-                <a target="_blank" href="https://cmntxrecords.bandcamp.com/album/all-semantics-i">Download / Stream ↗</a>
+                <a target="_blank" href="https://cmntxrecords.bandcamp.com/album/all-semantics-i">Download / Stream
+                    ↗</a>
                 <div class="release-btn">
-                    <button type="button" class="btn" data-toggle aria-expanded="false">ABOUT</button>
+                    <button type="button" class="btn about-btn" data-toggle aria-expanded="false">About</button>
                 </div>
 
                 <div class="details" inert>
@@ -524,18 +560,18 @@ Art and Design by Luca Civita & Justin Cook
                         <div class="details-columns">
                             <div class="col">
                                 <p>released November, 1 2021
-on <a href="https://www.cmntxrecords.com/" target="_blank">cmntx records</a>
-<br><br>
-Ochre is grown from field recordings taken at Paint Pots in Kootenay National Park 
-<br><br>
-composition, mixing, mastering - Dan Langa</p>
+                                    on <a href="https://www.cmntxrecords.com/" target="_blank">cmntx records</a>
+                                    <br><br>
+                                    Ochre is grown from field recordings taken at Paint Pots in Kootenay National Park
+                                    <br><br>
+                                    composition, mixing, mastering - Dan Langa
+                                </p>
                             </div>
                             <div class="col">
                                 <p>
                                 </p>
                                 <br>
-                                <div style="display:flex; justify-content: end;"><button type="button" class="btn"
-                                        data-toggle>COLLAPSE</button></div>
+                       
                             </div>
                         </div>
                     </div>
@@ -549,15 +585,16 @@ composition, mixing, mastering - Dan Langa</p>
                 </div>
                 <div class="release">
                     <h3>Swell (feat. Sam Johnson)</h3>
-                    <p>2024</p>
+                    <p>2020</p>
                     <div class="tracks">
                         <p><button type="button" class="track-btn" data-src="assets/audio/shell-adlai-remix.mp3"
-                                data-title="shell (adlai remix)" aria-label="Play shell (adlai remix)">▶</button>Swell (feat. Sam Johnson)</p>
+                                data-title="shell (adlai remix)" aria-label="Play shell (adlai remix)">▶</button>Swell
+                            (feat. Sam Johnson)</p>
                     </div>
                 </div>
                 <a target="_blank" href="https://lnkfi.re/3Yv6YMHK">Download / Stream ↗</a>
                 <div class="release-btn">
-                    <button type="button" class="btn" data-toggle aria-expanded="false">ABOUT</button>
+                    <button type="button" class="btn about-btn" data-toggle aria-expanded="false">About</button>
                 </div>
 
                 <div class="details" inert>
@@ -565,20 +602,20 @@ composition, mixing, mastering - Dan Langa</p>
                         <div class="details-columns">
                             <div class="col">
                                 <p>recorded March 11, 2019 in Columbus, OH
-<br><br>
-released April 24, 2020
-<br><br>
-composition, mixing - Dan Langa
-cello<br><br>composition - Sam Johnson
-<br><br>
-artwork - Mimi Harding</p>
+                                    <br><br>
+                                    released April 24, 2020
+                                    <br><br>
+                                    composition, mixing - Dan Langa
+                                    cello<br><br>composition - Sam Johnson
+                                    <br><br>
+                                    artwork - Mimi Harding
+                                </p>
                             </div>
                             <div class="col">
                                 <p>
                                 </p>
                                 <br>
-                                <div style="display:flex; justify-content: end;"><button type="button" class="btn"
-                                        data-toggle>COLLAPSE</button></div>
+                       
                             </div>
                         </div>
                     </div>
@@ -592,15 +629,16 @@ artwork - Mimi Harding</p>
                 </div>
                 <div class="release">
                     <h3>5th & William</h3>
-                    <p>2024</p>
+                    <p>2019</p>
                     <div class="tracks">
                         <p><button type="button" class="track-btn" data-src="assets/audio/shell-adlai-remix.mp3"
-                                data-title="shell (adlai remix)" aria-label="Play shell (adlai remix)">▶</button>5th & William</p>
+                                data-title="shell (adlai remix)" aria-label="Play shell (adlai remix)">▶</button>5th &
+                            William</p>
                     </div>
                 </div>
                 <a href="https://lnkfi.re/cC35Bc54" target="_blank">Download / Stream ↗</a>
                 <div class="release-btn">
-                    <button type="button" class="btn" data-toggle aria-expanded="false">ABOUT</button>
+                    <button type="button" class="btn about-btn" data-toggle aria-expanded="false">About</button>
                 </div>
 
                 <div class="details" inert>
@@ -608,22 +646,22 @@ artwork - Mimi Harding</p>
                         <div class="details-columns">
                             <div class="col">
                                 <p>Tape Loop Recorded With:
-<br><br>
-Tascam Portastudio 414 MKII
-Korg Minilogue
-T-Rex Replay Box
-Boss Time Delay
-<br><br>
-July 22, 2019
-<br><br>
-recorded, mixed, and mastered by Dan Langa</p>
+                                    <br><br>
+                                    Tascam Portastudio 414 MKII
+                                    Korg Minilogue
+                                    T-Rex Replay Box
+                                    Boss Time Delay
+                                    <br><br>
+                                    July 22, 2019
+                                    <br><br>
+                                    recorded, mixed, and mastered by Dan Langa
+                                </p>
                             </div>
                             <div class="col">
                                 <p>
                                 </p>
                                 <br>
-                                <div style="display:flex; justify-content: end;"><button type="button" class="btn"
-                                        data-toggle>COLLAPSE</button></div>
+                       
                             </div>
                         </div>
                     </div>
