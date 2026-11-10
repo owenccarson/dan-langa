@@ -292,6 +292,8 @@ gap:4px
 
 .date h3 {
     font-size:1rem;
+    font-weight:500;
+    margin-top:8px;
 }
 
 .program-note {
@@ -502,3 +504,13 @@ summary {
     user-select: none
 }
 
+.past {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-bottom:4px;
+}
+
+.past p {
+  margin-bottom:6px;
+}

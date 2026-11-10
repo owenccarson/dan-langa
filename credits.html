@@ -5,16 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dan Langa — Credits</title>
-
-    <!--swap font code here from Google Fonts, then change css file -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Reenie+Beanie&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-
-    <!-- Credit filter styles (can be moved into css/styles.css later) -->
     <style>
         .filters {
             background-color: var(--bg);
@@ -33,14 +29,11 @@
         }
 
         @media (max-width: 900px) {
-
             .filters {
                 padding: 0.5rem 0;
-                top:70px
+                top: 70px;
             }
- 
         }
-
 
         .filters button {
             all: unset;
@@ -49,7 +42,7 @@
             line-height: 1.4;
         }
 
-        .filters button + button::before {
+        .filters button+button::before {
             content: "·";
             display: inline-block;
             margin-right: 8px;
@@ -76,19 +69,15 @@
 </head>
 
 <body data-page="credits">
-    <!--mobile only-->
     <div class="mobile-bar">
         <strong>Dan Langa</strong>
         <button class="menu-btn" type="button" data-menu-toggle aria-expanded="false"
             aria-controls="sidebar">Menu</button>
     </div>
-    <!--universal-->
     <div class="overlay" data-overlay></div>
     <div class="layout">
         <aside class="sidebar" id="sidebar">
-            <a class="title" href="index.html">
-                <span class="title-name">Dan Langa</span>
-            </a>
+            <a class="title" href="index.html"><span class="title-name">Dan Langa</span></a>
             <nav class="nav" data-nav aria-label="Primary">
                 <a href="releases.html">Releases</a>
                 <a href="projects.html">Projects</a>
@@ -107,290 +96,572 @@
             <header class="hero">
                 <h1>Credits</h1>
             </header>
-
-            <!-- Filter bar: data-filter values must match the words in each item's data-category -->
             <nav class="filters" aria-label="Filter credits">
                 <button type="button" data-filter="all" class="is-active" aria-pressed="true">ALL</button>
                 <button type="button" data-filter="mixing" aria-pressed="false">MIXING</button>
                 <button type="button" data-filter="mastering" aria-pressed="false">MASTERING</button>
                 <button type="button" data-filter="engineering" aria-pressed="false">ENGINEERING</button>
                 <button type="button" data-filter="production" aria-pressed="false">PRODUCTION</button>
-                <button type="button" data-filter="Composition" aria-pressed="false">COMPOSITION</button>
+                <button type="button" data-filter="composition" aria-pressed="false">COMPOSITION</button>
                 <button type="button" data-filter="podcast" aria-pressed="false">PODCAST</button>
                 <button type="button" data-filter="film" aria-pressed="false">FILM/TV/VIDEO</button>
             </nav>
-
             <article class="item credits" data-category="production engineering mixing">
                 <div class="img">
-                    <img src="./assets/images/blank.png" alt="">
+                    <img src="./assets/images/other.avif" alt="Other Faces album art">
                 </div>
                 <div class="release">
-                    <h3>Dolor sit</h3>
-                    <p>2021</p>
+                    <h3>Other Faces</h3>
+                    <p>Other Faces</p>
                 </div>
-                <div class="tracks">
-                    <p>▶ Listen</p>
-                </div>
-                <div class="release-btn">
-                    <a>Bandcamp ↗</a>
-                </div>
+                <div class="release-btn"><a href="https://otherfacesband.bandcamp.com/album/other-faces" target="_blank"
+                        rel="noopener noreferrer">Bandcamp ↗</a></div>
                 <div class="item-end">
                     <p>Producer, Engineer, Mix</p>
                 </div>
             </article>
-
-            <article class="item credits" data-category="mixing mastering">
+            <article class="item credits" data-category="engineering mixing">
                 <div class="img">
-                    <img src="./assets/images/blank.png" alt="">
+                    <img src="./assets/images/this.avif" alt="This PLace is a Message album art">
                 </div>
                 <div class="release">
-                    <h3>Lorem Ipsum</h3>
-                    <p>2021</p>
+                    <h3>This Place is a Message</h3>
+                    <p>True East</p>
                 </div>
-                <div class="tracks">
-                    <p>▶ Listen</p>
-                </div>
-                <div class="release-btn">
-                    <a>Bandcamp ↗</a>
-                </div>
+                <div class="release-btn"><a
+                        href="https://trueeastnyc.bandcamp.com/album/this-place-is-a-message?label=2581121128&amp;tab=music"
+                        target="_blank" rel="noopener noreferrer">Bandcamp ↗</a></div>
                 <div class="item-end">
-                    <p>Mix, Master</p>
+                    <p>Engineer, Mix</p>
                 </div>
             </article>
-
-            <article class="item credits" data-category="Composition production">
+            <article class="item credits" data-category="mastering">
                 <div class="img">
-                    <img src="./assets/images/blank.png" alt="">
+                    <img src="./assets/images/metamorfosis.avif" alt="metamorfosis album art">
                 </div>
                 <div class="release">
-                    <h3>Amet</h3>
-                    <p>2021</p>
+                    <h3>Metamorfosis</h3>
+                    <p>Nnux</p>
                 </div>
-                <div class="tracks">
-                    <p>▶ Listen</p>
-                </div>
-                <div class="release-btn">
-                    <a>Bandcamp ↗</a>
-                </div>
+                <div class="release-btn"><a
+                        href="https://nnux.bandcamp.com/album/metamorfosis?label=2581121128&amp;tab=music"
+                        target="_blank" rel="noopener noreferrer">Bandcamp ↗</a></div>
                 <div class="item-end">
-                    <p>Composition, Producer</p>
+                    <p>Master</p>
                 </div>
             </article>
-
             <article class="item credits" data-category="engineering">
                 <div class="img">
-                    <img src="./assets/images/blank.png" alt="">
+                    <img src="./assets/images/bones.avif" alt="Bones Forever album art">
                 </div>
                 <div class="release">
-                    <h3>Lorem Ipsum</h3>
-                    <p>2021</p>
+                    <h3>Bones Forever</h3>
+                    <p>Bones Forever</p>
                 </div>
-                <div class="tracks">
-                    <p>▶ Listen</p>
-                </div>
-                <div class="release-btn">
-                    <a>Bandcamp ↗</a>
-                </div>
+                <div class="release-btn"><a href="https://bonesforever.bandcamp.com/album/bones-forever" target="_blank"
+                        rel="noopener noreferrer">Bandcamp ↗</a></div>
                 <div class="item-end">
                     <p>Engineer</p>
                 </div>
             </article>
-
-            <article class="item credits" data-category="podcast mixing">
+            <article class="item credits" data-category="production engineering mixing">
                 <div class="img">
-                    <img src="./assets/images/blank.png" alt="">
+                    <img src="./assets/images/happy.avif" alt="happy to be here album art">
                 </div>
                 <div class="release">
-                    <h3>Lorem Ipsum</h3>
-                    <p>2021</p>
+                    <h3>happy to be here</h3>
+                    <p>binti</p>
                 </div>
-                <div class="tracks">
-                    <p>▶ Listen</p>
-                </div>
-                <div class="release-btn">
-                    <a>Apple Podcasts ↗</a>
-                </div>
+                <div class="release-btn"><a href="https://binti-bb.bandcamp.com/album/happy-to-be-here" target="_blank"
+                        rel="noopener noreferrer">Bandcamp ↗</a></div>
                 <div class="item-end">
-                    <p>Podcast, Mix</p>
+                    <p>Producer, Engineer, Mix</p>
                 </div>
             </article>
-
-            <article class="item credits" data-category="film">
+            <article class="item credits" data-category="composition production mixing">
                 <div class="img">
-                    <img src="./assets/images/blank.png" alt="">
+                    <img src="./assets/images/after.avif" alt="After Nothing Comes album art">
                 </div>
                 <div class="release">
-                    <h3>Lorem Ipsum</h3>
-                    <p>2021</p>
+                    <h3>After Nothing Comes</h3>
+                    <p>Fugue State</p>
                 </div>
-                <div class="tracks">
-                    <p>▶ Watch</p>
-                </div>
-                <div class="release-btn">
-                    <a>Vimeo ↗</a>
-                </div>
+                <div class="release-btn"><a href="https://fugue-state.bandcamp.com/album/after-nothing-comes"
+                        target="_blank" rel="noopener noreferrer">Bandcamp ↗</a></div>
                 <div class="item-end">
-                    <p>Film/TV/Video</p>
+                    <p>Composer, Producer, Mix</p>
                 </div>
             </article>
-
+            <article class="item credits" data-category="mastering">
+                <div class="img">
+                    <img src="./assets/images/home.avif" alt="Home Movies album art">
+                </div>
+                <div class="release">
+                    <h3>Home Movies</h3>
+                    <p>Zachary Mezzo</p>
+                </div>
+                  <div class="release-btn"></div>
+                <div class="item-end">
+                    <p>Master</p>
+                </div>
+            </article>
+            <article class="item credits" data-category="production engineering mixing">
+                <div class="img">
+                    <img src="./assets/images/junpier.avif" alt="The Juniper Suite album art">
+                </div>
+                <div class="release">
+                    <h3>The Juniper Suite</h3>
+                    <p>Nicki Sekhar</p>
+                </div>
+                <div class="release-btn"><a href="https://nickisekhar.bandcamp.com/album/the-juniper-suite"
+                        target="_blank" rel="noopener noreferrer">Bandcamp ↗</a></div>
+                <div class="item-end">
+                    <p>Producer, Engineer, Mix</p>
+                </div>
+            </article>
+            <article class="item credits" data-category="composition production engineering mixing mastering">
+                <div class="img">
+                    <img src="./assets/images/beam.avif" alt="BEAM album art">
+                </div>
+                <div class="release">
+                    <h3>BEAM</h3>
+                    <p>Dan Langa</p>
+                </div>
+                <div class="release-btn"><a href="https://danlanga.bandcamp.com/track/beam" target="_blank"
+                        rel="noopener noreferrer">Bandcamp ↗</a></div>
+                <div class="item-end">
+                    <p>Composer, Producer, Engineer, Mix, Master</p>
+                </div>
+            </article>
+            <article class="item credits" data-category="composition production engineering mixing mastering">
+                <div class="img">
+                    <img src="./assets/images/sister.avif" alt="Sister in Red album art">
+                </div>
+                <div class="release">
+                    <h3>Sister in Red / Stilt</h3>
+                    <p>Dan Langa</p>
+                </div>
+                <div class="release-btn"><a href="https://danlanga.bandcamp.com/album/sister-in-red-stilt"
+                        target="_blank" rel="noopener noreferrer">Bandcamp ↗</a></div>
+                <div class="item-end">
+                    <p>Composer, Producer, Engineer, Mix, Master</p>
+                </div>
+            </article>
+            <article class="item credits" data-category="mastering">
+                <div class="img">
+                    <img src="./assets/images/book.avif" alt="Book of Sorrow album art">
+                </div>
+                <div class="release">
+                    <h3>Book of Sorrows</h3>
+                    <p>InfraSound, Darian Donovan Thomas</p>
+                </div>
+                <div class="release-btn"><a href="https://infrasoundnyc.bandcamp.com/album/book-of-sorrows"
+                        target="_blank" rel="noopener noreferrer">Bandcamp ↗</a></div>
+                <div class="item-end">
+                    <p>Master</p>
+                </div>
+            </article>
+            <article class="item credits" data-category="engineering mixing">
+                <div class="img">
+                    <img src="./assets/images/descent.avif" alt="Descent EP album art">
+                </div>
+                <div class="release">
+                    <h3>Descent EP</h3>
+                    <p>Harla</p>
+                </div>
+                <div class="release-btn"><a
+                        href="https://harla.bandcamp.com/album/descent-ep?label=2581121128&amp;tab=music"
+                        target="_blank" rel="noopener noreferrer">Bandcamp ↗</a></div>
+                <div class="item-end">
+                    <p>Engineer, Mix</p>
+                </div>
+            </article>
+            <article class="item credits" data-category="engineering">
+                <div class="img">
+                    <img src="./assets/images/be.avif" alt="Be The Sky album art">
+                </div>
+                <div class="release">
+                    <h3>Be The Sky</h3>
+                    <p>Tenzin Choegyal, Philip Glass</p>
+                </div>
+                <div class="release-btn"><a href="https://tenzinchoegyal.bandcamp.com/album/be-the-sky" target="_blank"
+                        rel="noopener noreferrer">Bandcamp ↗</a></div>
+                <div class="item-end">
+                    <p>Engineer</p>
+                </div>
+            </article>
+            <article class="item credits" data-category="mastering">
+                <div class="img">
+                    <img src="./assets/images/world.avif" alt="The World We Left Behind album art">
+                </div>
+                <div class="release">
+                    <h3>The World We Left Behind</h3>
+                    <p>Phong Tran</p>
+                </div>
+                <div class="release-btn"><a
+                        href="https://phongtran.bandcamp.com/album/the-world-we-left-behind?label=2581121128&amp;tab=music"
+                        target="_blank" rel="noopener noreferrer">Bandcamp ↗</a></div>
+                <div class="item-end">
+                    <p>Master</p>
+                </div>
+            </article>
+            <article class="item credits" data-category="production mixing mastering">
+                <div class="img">
+                    <img src="./assets/images/wake.avif" alt="I Wake To Birdsongs album art">
+                </div>
+                <div class="release">
+                    <h3>I Wake To Birdsongs</h3>
+                    <p>Diana Daniels</p>
+                </div>
+                <div class="release-btn"><a href="https://dianadaniels.bandcamp.com/album/i-wake-to-birdsongs"
+                        target="_blank" rel="noopener noreferrer">Bandcamp ↗</a></div>
+                <div class="item-end">
+                    <p>Producer, Mix, Master</p>
+                </div>
+            </article>
+            <article class="item credits" data-category="mastering">
+                <div class="img">
+                    <img src="./assets/images/rest.avif" alt="of Rest and Community album art">
+                </div>
+                <div class="release">
+                    <h3>of Rest and Community</h3>
+                    <p>Brian Ellis</p>
+                </div>
+                <div class="release-btn"><a
+                        href="https://brianellissound.bandcamp.com/album/of-rest-and-community?label=2581121128&amp;tab=music"
+                        target="_blank" rel="noopener noreferrer">Bandcamp ↗</a></div>
+                <div class="item-end">
+                    <p>Master</p>
+                </div>
+            </article>
+            <article class="item credits" data-category="mixing">
+                <div class="img">
+                    <img src="./assets/images/llorando.avif" alt="Llorando album art">
+                </div>
+                <div class="release">
+                    <h3>Llorando</h3>
+                    <p>Harla</p>
+                </div>
+                <div class="release-btn"></div>
+                <div class="item-end">
+                    <p>Mix</p>
+                </div>
+            </article>
+            <article class="item credits" data-category="composition production mixing mastering">
+                <div class="img">
+                    <img src="./assets/images/war.avif" alt="War of Attrition album art">
+                </div>
+                <div class="release">
+                    <h3>War of Attrition</h3>
+                    <p>Dan Langa feat. Hauzu</p>
+                </div>
+                <div class="release-btn"></div>
+                <div class="item-end">
+                    <p>Composer, Producer, Mix, Master</p>
+                </div>
+            </article>
+            <article class="item credits" data-category="composition production">
+                <div class="img">
+                    <img src="./assets/images/alright.avif" alt="I'm Alright, I'm OK (Reworks) album art">
+                </div>
+                <div class="release">
+                    <h3>I&#x27;m Alright, I&#x27;m OK (Reworks)</h3>
+                    <p>Dan Langa</p>
+                </div>
+                <div class="release-btn"></div>
+                <div class="item-end">
+                    <p>Composer, Producer</p>
+                </div>
+            </article>
             <article class="item credits" data-category="mastering">
                 <div class="img">
                     <img src="./assets/images/blank.png" alt="">
                 </div>
                 <div class="release">
-                    <h3>Lorem Ipsum</h3>
-                    <p>2021</p>
+                    <h3>Proximity</h3>
+                    <p>Zachary Mezzo</p>
                 </div>
-                <div class="tracks">
-                    <p>▶ Listen</p>
-                </div>
-                <div class="release-btn">
-                    <a>Bandcamp ↗</a>
-                </div>
+                <div class="release-btn"></div>
                 <div class="item-end">
                     <p>Master</p>
                 </div>
             </article>
-
-            <article class="item credits" data-category="production Composition">
+            <article class="item credits" data-category="mastering">
                 <div class="img">
                     <img src="./assets/images/blank.png" alt="">
                 </div>
                 <div class="release">
-                    <h3>Lorem Ipsum</h3>
-                    <p>2021</p>
+                    <h3>The Man From There</h3>
+                    <p>Theo Haber</p>
                 </div>
-                <div class="tracks">
-                    <p>▶ Listen</p>
-                </div>
-                <div class="release-btn">
-                    <a>Bandcamp ↗</a>
-                </div>
+                <div class="release-btn"></div>
                 <div class="item-end">
-                    <p>Producer, Composition</p>
+                    <p>Master</p>
                 </div>
             </article>
-
-            <article class="item credits" data-category="mixing engineering">
+            <article class="item credits" data-category="mixing">
                 <div class="img">
                     <img src="./assets/images/blank.png" alt="">
                 </div>
                 <div class="release">
-                    <h3>Lorem Ipsum</h3>
-                    <p>2021</p>
+                    <h3>Chanson Fatale</h3>
+                    <p>Harla</p>
                 </div>
-                <div class="tracks">
-                    <p>▶ Listen</p>
-                </div>
-                <div class="release-btn">
-                    <a>Bandcamp ↗</a>
-                </div>
+                <div class="release-btn"></div>
                 <div class="item-end">
-                    <p>Engineer, Mix</p>
+                    <p>Mix</p>
                 </div>
             </article>
-
-            <article class="item credits" data-category="podcast engineering">
+            <article class="item credits" data-category="mastering">
                 <div class="img">
                     <img src="./assets/images/blank.png" alt="">
                 </div>
                 <div class="release">
-                    <h3>Lorem Ipsum</h3>
-                    <p>2021</p>
+                    <h3>FEELING BODY</h3>
+                    <p>Nyokabi Kariũki</p>
                 </div>
-                <div class="tracks">
-                    <p>▶ Listen</p>
-                </div>
-                <div class="release-btn">
-                    <a>Apple Podcasts ↗</a>
-                </div>
+                <div class="release-btn"></div>
                 <div class="item-end">
-                    <p>Podcast, Engineer</p>
+                    <p>Master</p>
                 </div>
             </article>
-
-            <article class="item credits" data-category="film mixing">
+            <article class="item credits" data-category="mixing">
                 <div class="img">
                     <img src="./assets/images/blank.png" alt="">
                 </div>
                 <div class="release">
-                    <h3>Lorem Ipsum</h3>
-                    <p>2021</p>
+                    <h3>of Feelings and Fiction</h3>
+                    <p>Evan O. Adams</p>
                 </div>
-                <div class="tracks">
-                    <p>▶ Watch</p>
-                </div>
-                <div class="release-btn">
-                    <a>Vimeo ↗</a>
-                </div>
+                <div class="release-btn"></div>
                 <div class="item-end">
-                    <p>Film/TV/Video, Mix</p>
+                    <p>Mix</p>
                 </div>
             </article>
-
-            <article class="item credits" data-category="mastering engineering">
+            <article class="item credits" data-category="mixing">
                 <div class="img">
                     <img src="./assets/images/blank.png" alt="">
                 </div>
                 <div class="release">
-                    <h3>Lorem Ipsum</h3>
-                    <p>2021</p>
+                    <h3>Hold My Threads</h3>
+                    <p>Lena Ruth</p>
                 </div>
-                <div class="tracks">
-                    <p>▶ Listen</p>
-                </div>
-                <div class="release-btn">
-                    <a>Bandcamp ↗</a>
-                </div>
+                <div class="release-btn"></div>
                 <div class="item-end">
-                    <p>Engineer, Master</p>
+                    <p>Mix</p>
                 </div>
             </article>
-
-            <article class="item credits" data-category="production">
+            <article class="item credits" data-category="composition production mixing">
                 <div class="img">
                     <img src="./assets/images/blank.png" alt="">
                 </div>
                 <div class="release">
-                    <h3>Lorem Ipsum</h3>
-                    <p>2021</p>
+                    <h3>I&#x27;m Alright, I&#x27;m OK</h3>
+                    <p>Dan Langa</p>
                 </div>
-                <div class="tracks">
-                    <p>▶ Listen</p>
-                </div>
-                <div class="release-btn">
-                    <a>Bandcamp ↗</a>
-                </div>
+                <div class="release-btn"></div>
                 <div class="item-end">
-                    <p>Producer</p>
+                    <p>Composer, Producer, Mix</p>
                 </div>
             </article>
-
-            <article class="item credits" data-category="Composition film">
+            <article class="item credits" data-category="mixing">
                 <div class="img">
                     <img src="./assets/images/blank.png" alt="">
                 </div>
                 <div class="release">
-                    <h3>Lorem Ipsum</h3>
-                    <p>2021</p>
+                    <h3>Drawing and what comes Afterwards (or My Time Underwater)</h3>
+                    <p>Michael Denis Ó Callaghan</p>
                 </div>
-                <div class="tracks">
-                    <p>▶ Watch</p>
-                </div>
-                <div class="release-btn">
-                    <a>Vimeo ↗</a>
-                </div>
+                <div class="release-btn"></div>
                 <div class="item-end">
-                    <p>Composition, Film/TV/Video</p>
+                    <p>Mix</p>
+                </div>
+            </article>
+            <article class="item credits" data-category="mastering">
+                <div class="img">
+                    <img src="./assets/images/blank.png" alt="">
+                </div>
+                <div class="release">
+                    <h3>Not Minecraft</h3>
+                    <p>Bridge Enthusiast</p>
+                </div>
+                <div class="release-btn"></div>
+                <div class="item-end">
+                    <p>Master</p>
+                </div>
+            </article>
+            <article class="item credits" data-category="composition production engineering mixing mastering">
+                <div class="img">
+                    <img src="./assets/images/blank.png" alt="">
+                </div>
+                <div class="release">
+                    <h3>Swell</h3>
+                    <p>Dan Langa</p>
+                </div>
+                <div class="release-btn"></div>
+                <div class="item-end">
+                    <p>Composer, Producer, Engineer, Mix, Master</p>
+                </div>
+            </article>
+            <article class="item credits" data-category="composition production engineering mixing mastering">
+                <div class="img">
+                    <img src="./assets/images/blank.png" alt="">
+                </div>
+                <div class="release">
+                    <h3>5th &amp; William</h3>
+                    <p>Dan Langa</p>
+                </div>
+                <div class="release-btn"></div>
+                <div class="item-end">
+                    <p>Composer, Producer, Engineer, Mix, Master</p>
+                </div>
+            </article>
+            <article class="item credits" data-category="composition film">
+                <div class="img">
+                    <img src="./assets/images/blank.png" alt="">
+                </div>
+                <div class="release">
+                    <h3>Highest Nature</h3>
+                    <p>dir. Elle Rose Rinaldi</p>
+                </div>
+                <div class="release-btn"></div>
+                <div class="item-end">
+                    <p>Composer, Film/TV/Video</p>
+                </div>
+            </article>
+            <article class="item credits" data-category="composition film">
+                <div class="img">
+                    <img src="./assets/images/blank.png" alt="">
+                </div>
+                <div class="release">
+                    <h3>Cry For Me (short)</h3>
+                    <p>dir. John Ji-Heuk Kim</p>
+                </div>
+                <div class="release-btn"></div>
+                <div class="item-end">
+                    <p>Composer, Film/TV/Video</p>
+                </div>
+            </article>
+            <article class="item credits" data-category="composition film">
+                <div class="img">
+                    <img src="./assets/images/blank.png" alt="">
+                </div>
+                <div class="release">
+                    <h3>Breakdown: 1975 (Netflix)</h3>
+                    <p>original music by Daniel Wohl</p>
+                </div>
+                <div class="release-btn"></div>
+                <div class="item-end">
+                    <p>Composer Assistant, Film/TV/Video</p>
+                </div>
+            </article>
+            <article class="item credits" data-category="composition film">
+                <div class="img">
+                    <img src="./assets/images/blank.png" alt="">
+                </div>
+                <div class="release">
+                    <h3>Sister in Red (short)</h3>
+                    <p>dir. Elle Rose Rinaldi</p>
+                </div>
+                <div class="release-btn"></div>
+                <div class="item-end">
+                    <p>Composer, Film/TV/Video</p>
+                </div>
+            </article>
+            <article class="item credits" data-category="composition film">
+                <div class="img">
+                    <img src="./assets/images/blank.png" alt="">
+                </div>
+                <div class="release">
+                    <h3>Partner in Crime</h3>
+                    <p>dir. Alex Wood</p>
+                </div>
+                <div class="release-btn"></div>
+
+                <div class="item-end">
+                    <p>Composer, Film/TV/Video</p>
+                </div>
+            </article>
+            <article class="item credits" data-category="mixing film">
+                <div class="img">
+                    <img src="./assets/images/blank.png" alt="">
+                </div>
+                <div class="release">
+                    <h3>Sh*t Save the World</h3>
+                </div>
+                <div class="release-btn"></div>
+                <div class="item-end">
+                    <p>Score Mix, Film/TV/Video</p>
+                </div>
+            </article>
+            <article class="item credits" data-category="composition film">
+                <div class="img">
+                    <img src="./assets/images/blank.png" alt="">
+                </div>
+                <div class="release">
+                    <h3>White Slate (short)</h3>
+                    <p>dir. Alex Wood</p>
+                </div>
+                <div class="release-btn"></div>
+                <div class="item-end">
+                    <p>Composer, Film/TV/Video</p>
+                </div>
+            </article>
+            <article class="item credits" data-category="composition podcast">
+                <div class="img">
+                    <img src="./assets/images/blank.png" alt="">
+                </div>
+                <div class="release">
+                    <h3>Minding Memory</h3>
+                    <p>University of Michigan</p>
+                </div>
+                <div class="release-btn"></div>
+                <div class="item-end">
+                    <p>Composer, Editor, Podcast</p>
+                </div>
+            </article>
+            <article class="item credits" data-category="composition podcast">
+                <div class="img">
+                    <img src="./assets/images/blank.png" alt="">
+                </div>
+                <div class="release">
+                    <h3>RAPM Focus Podcast</h3>
+                    <p>ASRA Pain Medicine</p>
+                </div>
+                <div class="release-btn"></div>
+                <div class="item-end">
+                    <p>Composer, Editor, Podcast</p>
+                </div>
+            </article>
+            <article class="item credits" data-category="composition podcast">
+                <div class="img">
+                    <img src="./assets/images/blank.png" alt="">
+                </div>
+                <div class="release">
+                    <h3>Secret Lives of the Disabled</h3>
+                    <p>Sally Greenhouse</p>
+                </div>
+                <div class="release-btn"></div>
+                <div class="item-end">
+                    <p>Composer, Podcast</p>
+                </div>
+            </article>
+            <article class="item credits" data-category="composition podcast">
+                <div class="img">
+                    <img src="./assets/images/blank.png" alt="">
+                </div>
+                <div class="release">
+                    <h3>Slavery North Podcast</h3>
+                    <p>UMass Amherst</p>
+                </div>
+                <div class="release-btn"></div>
+                <div class="item-end">
+                    <p>Composer, Editor, Podcast</p>
                 </div>
             </article>
         </main>
     </div>
-
     <script src="js/nav.js"></script>
-
-    <!-- Credit filter logic (can be moved into js/filters.js later) -->
     <script>
         (() => {
             const bar = document.querySelector('.filters');
