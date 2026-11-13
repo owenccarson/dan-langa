@@ -17,106 +17,52 @@
 
 <style>
   body {
-    background-color: rgb(39, 37, 36);
-    color: rgb(49, 49, 49);
+
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('./assets/images/watercolor.avif') !important;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-color: black;
+
+
   }
 
-  .lede {
-    color: rgb(59, 59, 59);
+  .tracks {
+    gap:0px
   }
 
-  .item {
-    background-color: transparent;
+  .tracks p {
+
+    margin:0px 0px .5rem 1rem;
+
   }
 
-  .item p {
-    color: rgb(48, 48, 48);
-  }
-
-  /* ---------- Folder tabs ---------- */
-  .folder {
-    --folder-bg: #f5e4c4;
-    --folder-edge: #816c56;
-    --tab-idle-bg: #be9a76;
-    --tab-idle-text: #2b2a29;
-    margin-top: 2rem;
-  }
-
-  .folder-tabs {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    gap: 4px;
+  /* "More..." / "Less..." buttons: inline, underlined text */
+  .more-btn,
+  .less-btn {
+    display: inline;
+    background: none;
+    border: none;
+    padding: 0;
     margin: 0;
-    padding: 0 14px 0 0;
-    list-style: none;
-    position: relative;
-    z-index: 1;
-  }
-
-  .folder-tab {
-    display: inline-block;
-    text-decoration: none;
-    margin: 0 0 -1px;
-    padding: 10px 22px 9px;
-    background: var(--tab-idle-bg);
-    color: var(--tab-idle-text);
-    border: 1px solid var(--folder-edge);
-    border-radius: 10px 10px 0 0;
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.78rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    white-space: nowrap;
+    font: inherit;
+    color: inherit;
+     text-underline-offset: .2rem;
+  text-decoration:underline;
+  text-decoration-color: #c0b4af;
     cursor: pointer;
   }
 
-  .folder-tab:hover {
-    color: #4e4d4d;
+  .more-btn:hover,
+  .more-btn:focus-visible,
+  .less-btn:hover,
+  .less-btn:focus-visible {
+    opacity:0.8;
   }
 
-  .folder-tab:focus-visible {
-    outline: 2px solid #fff;
-    outline-offset: 2px;
-  }
-
-  .folder-tab[aria-selected="true"] {
-    background: var(--folder-bg);
-    color: #3f3e3e;
-    padding-top: 12px;
-    /* hides the panel's top border beneath the active tab */
-    border-bottom-color: var(--folder-bg);
-  }
-
-  .folder-panels {
-    position: relative;
-    background: var(--folder-bg);
-    border: 1px solid var(--folder-edge);
-    border-radius: 10px 0 10px 10px;
-    padding: 2rem;
-  }
-
-  .folder-panel[hidden] {
+  .about-chunk[hidden],
+  .more-btn[hidden] {
     display: none;
-  }
-
-  .folder-panel> :first-child {
-    margin-top: 0;
-  }
-
-  .folder-panel> :last-child {
-    margin-bottom: 0;
-  }
-
-  @media (max-width: 600px) {
-    .folder-tab {
-      padding: 9px 14px 8px;
-      font-size: 0.72rem;
-    }
-
-    .folder-panels {
-      padding: 1.25rem;
-    }
   }
 </style>
 
@@ -129,167 +75,151 @@
   <!--universal-->
   <div class="overlay" data-overlay></div>
   <div class="layout">
-    <aside style="background-color:transparent" class="sidebar" id="sidebar">
+    <aside style="background-color:transparent; position:relative !important" class="sidebar" id="sidebar">
       <a style="color: white" href=projects.html>Dan Langa</a>
     </aside>
     <main class="content" id="main">
-      <header class="hero">
-        <h1 style="font-family: var(--font-hw);font-size:4rem;color:white">FUGUE STATE</h1>
-      </header>
+      <div id="about-text" style="font-size:.8rem; width:100%;background:rgb(252, 247, 229);padding:2rem;  border: 3px solid #706f6f; /* Innermost border */
+  box-shadow: 
+    0 0 0 5px rgb(252, 247, 229),  /* Second border (5px wide) */
+    0 0 0 8px #6a6a6a, /* Third border (5px wide, 10px total spread) */
+    0 0 0 13px rgb(252, 247, 229); /* Fourth border (5px wide, 15px total spread) */">
+        <header class="hero">
+          <h1 style="font-size:6rem;margin-top:0rem;margin-bottom:.5rem;opacity:0.9;line-height:1.5;text-align:center"><i>fugue state</i></h1>
+        </header>
+    <br>
+        <br>
+
+        <h2 style="font-size:1rem;text-align:center"><strong>AFTER NOTHING COMES</strong></h2>
+           
+        <p style="text-align:center"><i>released May 22, 2026 on <a>Switch Hit Records</a></i></p>
+      
+        <br>
+        <div style="display:grid; grid-template-columns: repeat(2, 1fr)">
+        <img src="./assets/images/after_high.avif"><div><div class="tracks">
+                        <p><button type="button" class="track-btn"
+                                data-src="assets/audio/im_alright_2/01 - Dan Langa - intro.mp3" data-title="intro"
+                                aria-label="Play intro">▶</button> Warmer</p>
+                        <p><button type="button" class="track-btn"
+                                data-src="assets/audio/im_alright_2/02 - Dan Langa - mayhap.mp3" data-title="mayhap"
+                                aria-label="Play mayhap">▶</button> In This Moment</p>
+                        <p><button type="button" class="track-btn"
+                                data-src="assets/audio/im_alright_2/03 - Dan Langa - structure 2.mp3"
+                                data-title="structure 2" aria-label="Play structure 2">▶</button> Everything Happens Again</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/interlude.mp3"
+                                data-title="interlude" aria-label="Play interlude">▶</button> Floating</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/shell.mp3" data-title="shell"
+                                aria-label="Play shell">▶</button> We Are Lasting</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/whim.mp3" data-title="whim"
+                                aria-label="Play whim">▶</button> Dark</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/nether.mp3"
+                                data-title="nether" aria-label="Play nether">▶</button> The Dancer at Midnight</p>
+                        <p><button type="button" class="track-btn"
+                                data-src="assets/audio/bloody-rainbow-feat-sabeth-perez.mp3"
+                                data-title="bloody rainbow (feat Sabeth Perez)"
+                                aria-label="Play bloody rainbow (feat Sabeth Perez)">▶</button> So What Is There?</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/presage.mp3"
+                                data-title="presage" aria-label="Play presage">▶</button> He Was Always So Precise</p>
+                        <p><button type="button" class="track-btn" data-src="assets/audio/want-of-a-bird-verily.mp3"
+                                data-title="want of a bird (verily)"
+                                aria-label="Play want of a bird (verily)">▶</button> Reflections</p>
+                    </div></div></div>
+        <br>
+        
+
+     
+              <h2 style="font-size:1rem;margin-top:1rem"><strong>ABOUT</strong></h2>
+
+        <!-- Paragraph 1 (first reveal continues the same paragraph) -->
+        <p>The composer Dan Langa took home the recordings of his new project eager to splice takes, cut in
+          surreptitious B-roll, and render the performances into something strange and new. This was the work - a
+          graphic novel as inspiration, a killer’s row of studio pros, and a plan to aggressively stir the cauldron,
+          something like contemporary chamber dub. But in reviewing the tape, he came across a voice he couldn’t place.
+          <button class="more-btn" type="button" aria-expanded="false" aria-controls="about-2" data-reveal="about-2">More...</button><span class="about-chunk" id="about-2" hidden>
+            Unintelligible yet distinct, caught at a distance in what seemed to be a room mic, an utterance he couldn’t
+            recognize, otherworldly. That’s odd, he thought. But then, from another day entirely, the same five syllable
+            sound, manifesting this time in the left channel of the piano. And when the same nearly human sound again
+            appeared among peals of woodwinds, he dove deep into the DAW to find it.
+            <button class="more-btn" type="button" aria-expanded="false" aria-controls="about-3" data-reveal="about-3">More...</button></span></p>
+
+        <!-- Paragraph 2 -->
+        <p class="about-chunk" id="about-3" hidden>Anomalous sounds, sure, okay, nothing unusual for Langa - he’s a working composer and a deep student of
+          contemporary avant garde music, weird noises abound, having studied at Amherst and NYU with greats like Robert
+          Honstein, Eric Wubbels, and Bang on a Can repetition gurus Julia Wolf & Michael Gordon. He’s taken cues from
+          all the great, ghostly spectres of the 20th century, too, like John Cage’s otherworldly tape splicing or John
+          Luther Adam’s uncanny ability to capture Earth spirit lamentations. And Langa is also interested in blurring
+          distinctions and broadening our sometimes narrow ideas about how to imagine music - he’s notably one of the
+          four composers behind CMNTX a by-artists-for-artists record label putting out really remarkably novel music.
+          Through the effort, he’s both released and helped realize a smattering of fascinating, leftfield releases.
+          <button class="more-btn" type="button" aria-expanded="false" aria-controls="about-4" data-reveal="about-4">More...</button></p>
+
+        <!-- Paragraph 3 -->
+        <p class="about-chunk" id="about-4" hidden>But here’s the thing about that eerie, unaccounted-for sound in these sessions: when Langa zoomed in on the
+          track, the computer readout showed nothing out of the ordinary. And when he tried to play the sound back, it
+          could not be replicated. It had disappeared. Was his computer glitching? Was he hallucinating? Was there
+          something living in the walls? He ventured deeper, digital bit by bit, turning .WAVs inside out, slowing down,
+          stretching out, and deleting, a process that rendered the remaining music nearly unrecognizable, more mangled
+          and manipulated than he could have ever planned. Whatever spirit he sought had flown. And the process of
+          hunting for it? Now also a mystery. He ran an audio gauntlet in search and could not retrace his steps. Up
+          until that moment, the project lacked a name, so why not describe that to which he had succumbed? Fugue State,
+          a method, a christening.
+          <button class="more-btn" type="button" aria-expanded="false" aria-controls="about-5" data-reveal="about-5">More...</button></p>
+
+        <!-- Paragraph 4 (ends with "Less...") -->
+        <p class="about-chunk" id="about-5" hidden>The project isn’t necessarily credited to Langa alone, nor is the project a traditional ensemble exactly,
+          though he works with an impressive collection of New York City musicians, including the proliferous Shahzad
+          Ismaily, noted vocalist in the gamelan tradition Peni Candra Rini, and New Music figure William Brittelle,
+          whose work with Roomful of Teeth and with the New Amsterdam label make places him in a particular
+          current-decade pantheon. Fugue State as an entity has more to do with the process, a tearing-apart-the-house,
+          if you will. An aural Gordon Matta-Clark. The project’s first release is a spectral song cycle that lives in
+          the Venn Diagram overlap of saxophone ambient, crumbling art song, and elegantly fried motherboard remixes.
+          Named “After Nothing Comes” for the Aidan Koch graphic novel that is its original source material, the album
+          will see release on Switch Hit Records - another artist collective - Spring 2026. The haunting, then the
+          hunting, after nothing comes.
+          <button class="less-btn" type="button" data-collapse>Less...</button></p>
+      </div>
+
+
+      
 
       <!--
         TABS: to add one, copy an <a> in the tablist and a matching <section> in the panels.
         Match them with the same data-tab value and set the link's href to "#" + that value.
         Each tab is a real link: fugue-state.html#about opens the About tab.
       -->
-      <div class="folder" data-tabs>
-        <div class="folder-tabs" role="tablist" aria-label="Fugue State sections">
-          <a class="folder-tab" role="tab" href="#after-nothing-comes" data-tab="after-nothing-comes" data-default>After
-            Nothing Comes</a>
-          <a class="folder-tab" role="tab" href="#about" data-tab="about">About</a>
-        </div>
-
-        <div class="folder-panels">
-          <section class="folder-panel" role="tabpanel" data-panel="after-nothing-comes">
-            <h2>After Nothing Comes</h2>
-            <hr>
-            
-            <br>
-            <div
-              style="margin-bottom:2rem;width:100%;display:flex;flex-direction:row;justify-content:center;align-items:center;align-items: center;">
-              <img style="max-width:500px;border:1px solid grey" src="./assets/images/after.avif"></div>
-        
-            <br>
-            <article class="item">
-              <h3>Lorem</h3>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros.
-                Nullam malesuada erat ut turpis. Suspendisse urna nibh viverra non semper suscipit posuere a pede.</p>
-              <a>Website ↗</a>
-            </article>
-            <article class="item">
-              <h3>Ipsum</h3>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros.
-                Nullam malesuada erat ut turpis. Suspendisse urna nibh viverra non semper suscipit posuere a pede.</p>
-              <a>Website ↗</a>
-            </article>
-          </section>
-
-          <section class="folder-panel" role="tabpanel" data-panel="about">
-            <h2>About</h2>
-            <hr>
-            <br>
-            <p class="lede">The composer Dan Langa took home the recordings of his new project eager to splice takes,
-              cut in surreptitious B-roll, and render the performances into something strange and new. This was the work
-              - a graphic novel as inspiration, a killer’s row of studio pros, and a plan to aggressively stir the
-              cauldron, something like contemporary chamber dub. But in reviewing the tape, he came across a voice he
-              couldn’t place. Unintelligible yet distinct, caught at a distance in what seemed to be a room mic, an
-              utterance he couldn’t recognize, otherworldly. That’s odd, he thought. But then, from another day
-              entirely, the same five syllable sound, manifesting this time in the left channel of the piano. And when
-              the same nearly human sound again appeared among peals of woodwinds, he dove deep into the DAW to find it.
-
-<br><br>
-
-              Anomalous sounds, sure, okay, nothing unusual for Langa - he’s a working composer and a deep student of
-              contemporary avant garde music, weird noises abound, having studied at Amherst and NYU with greats like
-              Robert Honstein, Eric Wubbels, and Bang on a Can repetition gurus Julia Wolf & Michael Gordon. He’s taken
-              cues from all the great, ghostly spectres of the 20th century, too, like John Cage’s otherworldly tape
-              splicing or John Luther Adam’s uncanny ability to capture Earth spirit lamentations. And Langa is also
-              interested in blurring distinctions and broadening our sometimes narrow ideas about how to imagine music -
-              he’s notably one of the four composers behind CMNTX a by-artists-for-artists record label putting out
-              really remarkably novel music. Through the effort, he’s both released and helped realize a smattering of
-              fascinating, leftfield releases.
-
-<br><br>
-
-              But here’s the thing about that eerie, unaccounted-for sound in these sessions: when Langa zoomed in on
-              the track, the computer readout showed nothing out of the ordinary. And when he tried to play the sound
-              back, it could not be replicated. It had disappeared. Was his computer glitching? Was he hallucinating?
-              Was there something living in the walls? He ventured deeper, digital bit by bit, turning .WAVs inside out,
-              slowing down, stretching out, and deleting, a process that rendered the remaining music nearly
-              unrecognizable, more mangled and manipulated than he could have ever planned. Whatever spirit he sought
-              had flown. And the process of hunting for it? Now also a mystery. He ran an audio gauntlet in search and
-              could not retrace his steps. Up until that moment, the project lacked a name, so why not describe that to
-              which he had succumbed? Fugue State, a method, a christening.
-
-<br><br>
-
-              The project isn’t necessarily credited to Langa alone, nor is the project a traditional ensemble exactly,
-              though he works with an impressive collection of New York City musicians, including the proliferous
-              Shahzad Ismaily, noted vocalist in the gamelan tradition Peni Candra Rini, and New Music figure William
-              Brittelle, whose work with Roomful of Teeth and with the New Amsterdam label make places him in a
-              particular current-decade pantheon. Fugue State as an entity has more to do with the process, a
-              tearing-apart-the-house, if you will. An aural Gordon Matta-Clark. The project’s first release is a
-              spectral song cycle that lives in the Venn Diagram overlap of saxophone ambient, crumbling art song, and
-              elegantly fried motherboard remixes. Named “After Nothing Comes” for the Aidan Koch graphic novel that is
-              its original source material, the album will see release on Switch Hit Records - another artist collective
-              - Spring 2026. The haunting, then the hunting, after nothing comes.</p>
-          </section>
-        </div>
-      </div>
     </main>
   </div>
 
-  <script src="js/nav.js"></script>
   <script>
-    // Generic folder-tab controller: works for any number of tabs, and any number of [data-tabs] groups.
-    document.querySelectorAll('[data-tabs]').forEach(function (group) {
-      var tabs = Array.from(group.querySelectorAll('[role="tab"]'));
-      var panels = Array.from(group.querySelectorAll('[role="tabpanel"]'));
+    (function () {
+      var chunks = document.querySelectorAll('.about-chunk');
+      var moreBtns = document.querySelectorAll('[data-reveal]');
 
-      // Wire up ids / aria so adding a tab only requires matching data attributes
-      tabs.forEach(function (tab) {
-        var key = tab.dataset.tab;
-        var panel = group.querySelector('[data-panel="' + key + '"]');
-        tab.id = 'tab-' + key;
-        tab.setAttribute('aria-controls', 'panel-' + key);
-        if (panel) {
-          panel.id = 'panel-' + key;
-          panel.setAttribute('aria-labelledby', tab.id);
-        }
-      });
-
-      // history: 'push' (click), 'replace' (keyboard), or null (initial load / back-forward)
-      function select(key, focus, history_) {
-        var match = tabs.find(function (t) { return t.dataset.tab === key; })
-          || group.querySelector('[role="tab"][data-default]')
-          || tabs[0];
-        tabs.forEach(function (t) {
-          var on = t === match;
-          t.setAttribute('aria-selected', on);
-          t.tabIndex = on ? 0 : -1;
-        });
-        panels.forEach(function (p) {
-          p.hidden = p.dataset.panel !== match.dataset.tab;
-        });
-        if (focus) match.focus();
-        if (history_ && location.hash.slice(1) !== match.dataset.tab) {
-          history[history_ === 'push' ? 'pushState' : 'replaceState'](null, '', '#' + match.dataset.tab);
-        }
-      }
-
-      tabs.forEach(function (tab, i) {
-        tab.addEventListener('click', function (e) {
-          e.preventDefault(); // switch tabs without the page jumping to the anchor
-          select(tab.dataset.tab, false, 'push');
-        });
-        tab.addEventListener('keydown', function (e) {
-          var n = tabs.length, next = null;
-          if (e.key === 'ArrowRight') next = (i + 1) % n;
-          else if (e.key === 'ArrowLeft') next = (i - 1 + n) % n;
-          else if (e.key === 'Home') next = 0;
-          else if (e.key === 'End') next = n - 1;
-          if (next !== null) {
-            e.preventDefault();
-            select(tabs[next].dataset.tab, true, 'replace');
+      // "More..." reveals the next chunk and hides its own button.
+      moreBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var target = document.getElementById(btn.getAttribute('data-reveal'));
+          if (target) {
+            target.hidden = false;
           }
+          btn.setAttribute('aria-expanded', 'true');
+          btn.hidden = true;
         });
       });
 
-      // Initial tab: URL hash if it matches, otherwise the tab marked data-default, otherwise the first tab.
-      // hashchange covers the back/forward buttons and anyone editing the URL by hand.
-      select(location.hash.slice(1), false, null);
-      window.addEventListener('hashchange', function () { select(location.hash.slice(1), false, null); });
-    });
+      // "Less..." collapses everything back to the start.
+      var less = document.querySelector('[data-collapse]');
+      if (less) {
+        less.addEventListener('click', function () {
+          chunks.forEach(function (c) { c.hidden = true; });
+          moreBtns.forEach(function (b) {
+            b.hidden = false;
+            b.setAttribute('aria-expanded', 'false');
+          });
+          document.getElementById('about-text').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      }
+    })();
   </script>
 </body>
 

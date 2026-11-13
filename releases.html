@@ -14,150 +14,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <style>
-        .track-btn {
-               background: #78716d;
-    border: 0;
-    padding: 0px 4px 0px 5px;
-    width: 1.5em;
-    text-align: left;
-    font: inherit;
-    color: #ffffff;
-    border-radius: 4px;
-    cursor: pointer;
-        }
-
-        /* Track rows: button stays left, title wraps to its right */
-.tracks p {
-    display: flex;
-    align-items: flex-start;
-    gap: .5em;
-    width: fit-content;
-    max-width: 100%;
-    padding-right: .5em;
-    border-radius: 4px;
-}
-
-.track-btn {
-    flex: none; /* don't let the button shrink or get pushed */
-}
-
-/* Playing state: dark background covers the whole row, text turns white */
-.tracks p:has(.track-btn.is-playing) {
-    background: #78716d; /* same as the button; swap for a darker shade if you like */
-    color: #fff;
-}
-
-        .track-btn:focus-visible,
-        .player-btn:focus-visible {
-            outline: 2px solid currentColor;
-            outline-offset: 2px;
-        }
-
-        .track-btn.is-playing {
-    padding-top: 2.5px;
-    padding-bottom: 0px; /* pushes the ❚❚ glyph up by roughly this amount */
-    line-height: 1;
-    padding-left:4px
-}
-
-        /* Sticky bottom player: slides up the first time a track is played */
-        .player {
-            position: fixed;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: .75rem 1.25rem;
-            background: var(--bg, Canvas);
-            color: var(--fg, CanvasText);
-            border-top: 1px solid currentColor;
-            font: inherit;
-            transform: translateY(100%);
-        }
-
-        .player.is-active {
-            transform: translateY(0);
-        }
-
-        .player-btn {
-            background: none;
-            border: 1px solid currentColor;
-            border-radius: 50%;
-            width: 2.25rem;
-            height: 2.25rem;
-            flex: none;
-            font: inherit;
-            color: inherit;
-            cursor: pointer;
-        }
-
-        .player-info {
-            min-width: 0;
-            flex: 0 1 18rem;
-            display: flex;
-            flex-direction: column;
-            line-height: 1.25;
-        }
-
-        .player-label {
-            font-size: .75em;
-            opacity: .65;
-            text-transform: uppercase;
-            letter-spacing: .05em;
-        }
-
-        .player-title,
-        .player-release {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .player-release {
-            font-size: .85em;
-            opacity: .75;
-        }
-
-        .player-seek {
-            flex: 1 1 auto;
-            min-width: 0;
-            accent-color: currentColor;
-            cursor: pointer;
-        }
-
-        .player-time {
-            flex: none;
-            font-variant-numeric: tabular-nums;
-            font-size: .85em;
-        }
-
-        body.has-player {
-            padding-bottom: 4.5rem;
-        }
-
-        @media (max-width: 600px) {
-            .player {
-                gap: .6rem;
-                padding: .6rem .75rem;
-            }
-
-            .player-time {
-                display: none;
-            }
-
-            .player-info {
-                flex-basis: 8rem;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .player {
-                transition: none;
-            }
-        }
+       
     </style>
 </head>
 <script>
@@ -228,7 +85,7 @@
                 </div>
                 <a target="_blank" href="https://danlanga.bandcamp.com/album/sister-in-red-stilt">Bandcamp ↗</a>
                 <div class="release-btn">
-                   <button type="button" class="btn about-btn" data-toggle aria-expanded="false">About</button>
+                    <button type="button" class="btn about-btn" data-toggle aria-expanded="false">About</button>
                 </div>
 
                 <!-- expandable section -->
@@ -278,7 +135,7 @@
                                         href="https://danlanga.bandcamp.com/merch/sister-in-red-poster">'Sister in Red'
                                         Poster ($15) ↗</a></p>
                                 <br>
-                       
+
                             </div>
                         </div>
                     </div>
@@ -321,7 +178,7 @@
                             </div>
                             <div class="col">
 
-                       
+
                             </div>
                         </div>
                     </div>
@@ -387,7 +244,7 @@
                                 </p>
                                 </p>
                                 <br>
-                       
+
                             </div>
                         </div>
                     </div>
@@ -528,7 +385,7 @@
                                         2</a>
                                 </p>
                                 <br>
-                       
+
                             </div>
                         </div>
                     </div>
@@ -571,7 +428,7 @@
                                 <p>
                                 </p>
                                 <br>
-                       
+
                             </div>
                         </div>
                     </div>
@@ -615,7 +472,7 @@
                                 <p>
                                 </p>
                                 <br>
-                       
+
                             </div>
                         </div>
                     </div>
@@ -661,7 +518,7 @@
                                 <p>
                                 </p>
                                 <br>
-                       
+
                             </div>
                         </div>
                     </div>
