@@ -713,33 +713,30 @@ button.btn {
 }
 
 .player-btn {
-  position: relative;
-  font-size: 0;
-  /* hide the text glyph */
+    --nudge: 0.1rem;   /* + moves the play triangle right, - moves it left */
+    position: relative;
+    font-size: 0;
 }
 
-/* Play triangle */
 .player-btn::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: .8rem;
-  height: .9rem;
-  background: currentColor;
-  clip-path: polygon(0 0, 100% 50%, 0 100%);
-  transform: translate(-40%, -50%);
-  /* nudged right so it looks centered */
+    content: "";
+    position: absolute;
+    inset: 0;
+    margin: auto;               /* centers exactly, no transform needed */
+    width: .8rem;
+    height: .9rem;
+    background: currentColor;
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+    translate: var(--nudge) 0;
 }
 
-/* Pause bars */
 .player-btn[aria-label="Pause"]::before {
-  width: .75rem;
-  height: .85rem;
-  clip-path: none;
-  background: linear-gradient(to right,
-      currentColor 0 35%, transparent 35% 65%, currentColor 65% 100%);
-  transform: translate(-50%, -50%);
+    width: .75rem;
+    height: .85rem;
+    clip-path: none;
+    background: linear-gradient(to right,
+        currentColor 0 35%, transparent 35% 65%, currentColor 65% 100%);
+    translate: 0 0;
 }
 
 .player-info {
@@ -793,7 +790,7 @@ body.has-player {
   }
   .player {
     gap: .6rem;
-    padding: .6rem .75rem;
+    padding: .6rem .75rem 2rem .75rem;
   }
 
   .player-time {
