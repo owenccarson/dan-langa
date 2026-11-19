@@ -621,17 +621,39 @@ button.btn {
 }
 
 .track-btn {
-  background: #9c938e;
-  border: 0;
-  padding: 0px 4px 0px 5px;
-  width: 1.5em;
-  text-align: left;
-  font: inherit;
-  color: #ffffff;
-  border-radius: 4px;
-  cursor: pointer;
+    position: relative;
+    flex: none;
+    width: 1.2rem;
+    height: 1.2rem;
+    padding: 0;
+    border: 0;
+    border-radius: 4px;
+    background: #9c938e;
+    color: #fff;
+    font-size: 0;          /* hides the text glyph */
+    cursor: pointer;
 }
 
+/* Play triangle */
+.track-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: .5rem;
+    height: .6rem;
+    background: currentColor;
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+/* Pause bars */
+.track-btn.is-playing::before {
+    width: .5rem;
+    height: .55rem;
+    clip-path: none;
+    background: linear-gradient(to right,
+        currentColor 0 35%, transparent 35% 65%, currentColor 65% 100%);
+}
 /* Track rows: button stays left, title wraps to its right */
 .tracks p {
   display: flex;
@@ -643,10 +665,6 @@ button.btn {
   border-radius: 4px;
 }
 
-.track-btn {
-  flex: none;
-  /* don't let the button shrink or get pushed */
-}
 
 /* Playing state: dark background covers the whole row, text turns white */
 .tracks p:has(.track-btn.is-playing) {
@@ -659,14 +677,6 @@ button.btn {
 .player-btn:focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 2px;
-}
-
-.track-btn.is-playing {
-  padding-top: 2.5px;
-  padding-bottom: 0px;
-  /* pushes the ❚❚ glyph up by roughly this amount */
-  line-height: 1;
-  padding-left: 4px
 }
 
 /* Sticky bottom player: slides up the first time a track is played */

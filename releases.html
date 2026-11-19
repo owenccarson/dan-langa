@@ -564,7 +564,6 @@
         (() => {
             const audio = new Audio();
             audio.preload = 'none';
-const PLAY = '\u25B6\uFE0E', PAUSE = '\u275A\u275A';
             const player = document.getElementById('player');
             const pToggle = document.getElementById('player-toggle');
             const pTitle = document.getElementById('player-title');
@@ -582,20 +581,16 @@ const PLAY = '\u25B6\uFE0E', PAUSE = '\u275A\u275A';
                 return m + ':' + String(s).padStart(2, '0');
             };
 
-            const setBtn = (btn, playing) => {
-                btn.textContent = playing ? PAUSE : PLAY;
-                btn.setAttribute('aria-label', (playing ? 'Pause ' : 'Play ') + btn.dataset.title);
-                btn.classList.toggle('is-playing', playing);
-            };
+    const setBtn = (btn, playing) => {
+    btn.setAttribute('aria-label', (playing ? 'Pause ' : 'Play ') + btn.dataset.title);
+    btn.classList.toggle('is-playing', playing);
+};
 
-            // Keep every control in step with the real audio state
-            const sync = () => {
-                const playing = !audio.paused && !audio.ended;
-                if (current) setBtn(current, playing);
-                pToggle.textContent = playing ? PAUSE : PLAY;
-                pToggle.setAttribute('aria-label', playing ? 'Pause' : 'Play');
-            };
-
+const sync = () => {
+    const playing = !audio.paused && !audio.ended;
+    if (current) setBtn(current, playing);
+    pToggle.setAttribute('aria-label', playing ? 'Pause' : 'Play');
+};
             const showPlayer = () => {
                 player.inert = false;
                 player.classList.add('is-active');
