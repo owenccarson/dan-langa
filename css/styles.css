@@ -71,6 +71,10 @@ hr {
   text-decoration: none;
   margin-bottom: 36px;
 }
+
+.mobile-bar .title {
+  margin-bottom: 0px;
+}
 .title-name {
   font-family: var(--font-hw);
   font-size: 1.75rem;
@@ -100,20 +104,22 @@ hr {
   display: none;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 16px;
+  padding: 8px 16px;
   background: var(--sidebar);
   color: var(--sidebar-text);
   position: sticky;
   top: 0;
   z-index: 50;
 }
+
+
 .menu-btn {
   appearance: none;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid transparent;
   background: transparent;
   color: inherit;
   border-radius: 10px;
-  padding: 8px 12px;
+  padding: 8px 0rem;
   font: inherit;
   cursor: pointer;
 }
@@ -235,7 +241,7 @@ h3 {
 
 .item .item-end {
     text-align: end;
-    flex:1;
+    flex:1.5;
 }
 
 .item .release {
@@ -362,8 +368,41 @@ button[type="submit"]:hover {
   gap: 2rem;
 }
 
+.caption {
+
+font-size:.5rem;
+text-align:right;
+color:var(--muted);
+margin-top:.5rem;
+
+}
+
 @media (max-width: 900px) {
+
+  .caption {
+    text-align:left;
+  }
+  .about {
+    flex-direction: column;
+  }
+
+  .past p, h3 {
+  padding-bottom:0.5rem;
+}
+
  
+  .item .item-end {
+    text-align: start;
+    flex:1.5;
+}
+
+.sidebar .title {
+display: none;
+}
+
+.filler {
+  display:none;
+};
   .about {
 
   flex-direction:column;
@@ -395,6 +434,7 @@ button[type="submit"]:hover {
   }
 
   .item {
+    display: flex;
     flex-direction: column;
     align-items: start;
   }
@@ -674,4 +714,9 @@ button.btn {
             .player {
                 transition: none;
             }
+        }
+
+        .press {
+          font-weight:600;
+     
         }
