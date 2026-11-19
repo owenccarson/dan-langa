@@ -73,41 +73,70 @@
   }
 
   @media (max-width: 768px) {
-  /* no mobile bar or drawer overlay */
-  .mobile-bar,
-  .overlay { display: none !important; }
 
-  /* undo any off-canvas sidebar behavior from the boilerplate */
-  .layout { display: block !important; }
-  .sidebar {
-    display: block !important;
-    position: static !important;
-    transform: none !important;
-    width: auto !important;
-    height: auto !important;
-    padding: 1rem !important;
+    /* no mobile bar or drawer overlay */
+    .mobile-bar,
+    .overlay {
+      display: none !important;
+    }
+
+    /* undo any off-canvas sidebar behavior from the boilerplate */
+    .layout {
+      display: block !important;
+    }
+
+    .sidebar {
+      display: block !important;
+      position: static !important;
+      transform: none !important;
+      width: auto !important;
+      height: auto !important;
+      padding: 1rem !important;
+    }
+
+    .content,
+    main.content {
+      margin: 20px 0 0 0 !important;
+      width: 100% !important;
+      /* room for the 14px decorative box-shadow border */
+      padding: 0 20px 20px !important;
+      box-sizing: border-box;
+    }
+
+    /* card padding and title size */
+    #about-text {
+      padding: 1.25rem !important;
+    }
+
+    #about-text h1 {
+      font-size: 4rem !important;
+    }
+
+    /* stack the two-column sections */
+    .album-grid,
+    .notes-grid {
+      grid-template-columns: 1fr !important;
+      gap: 1.5rem !important;
+    }
+
+    .side-col {
+      padding-left: 0 !important;
+      order: -1
+    }
+
+    .tracks {
+      padding-left: 0;
+    }
+
+    .tracks p {
+      margin-left: 0;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
   }
-  .content, main.content {
-    margin: 20px 0 0 0 !important;
-    width: 100% !important;
-    /* room for the 14px decorative box-shadow border */
-    padding: 0 20px 20px !important;
-    box-sizing: border-box;
-  }
-
-  /* card padding and title size */
-  #about-text { padding: 1.25rem !important; }
-  #about-text h1 { font-size: 4rem !important; }
-
-  /* stack the two-column sections */
-  .album-grid,
-  .notes-grid { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
-  .side-col { padding-left: 0 !important; order: -1 }
-  .tracks { padding-left: 0; }
-  .tracks p {margin-left: 0;}
-
-  img { max-width: 100%; height: auto; }
-}
 </style>
 
 <body data-page="home">
@@ -133,9 +162,9 @@
         <h2 style="font-size:1rem;text-align:center"><strong>AFTER NOTHING COMES</strong></h2>
 
 
-        <p style="text-align:center"><i>released May 22, 2026 on <a>Switch Hit Records</a></i></p>
-        <p style="text-align:center;margin:.25rem;font-size:.75rem;color:#6c6461"><a>BANDCAMP</a> ·
-          <a>STREAMING</a>
+        <p style="text-align:center"><i>released May 22, 2026 on <a href="https://switchhitrecords.com/" target="_blank">Switch Hit Records</a></i></p>
+        <p style="text-align:center;margin:.25rem;font-size:.75rem;color:#6c6461"><a href="https://fugue-state.bandcamp.com/album/after-nothing-comes" target="_blank">BANDCAMP</a> ·
+          <a href="https://linktr.ee/danlanga?lt_utm_source=lt_share_link#548750019" target="_blank">STREAMING</a>
         </p>
         <br>
         <div class="album-grid" style="display:grid; grid-template-columns: repeat(2, 1fr)">
@@ -143,28 +172,38 @@
           <div>
             <div class="tracks">
               <p style="color:#6c6461">TRACKLIST</p>
-              <p><button type="button" class="track-btn" data-src="assets/audio/after_nothing_comes/01-Fugue State-warmer-(master 24-48).mp3"
+              <p><button type="button" class="track-btn"
+                  data-src="assets/audio/after_nothing_comes/01-Fugue State-warmer-(master 24-48).mp3"
                   data-title="Warmer" aria-label="Play Warmer">▶</button> Warmer</p>
               <p><button type="button" class="track-btn"
-                  data-src="assets/audio/after_nothing_comes/02-Fugue State-in this moment-(master 24-48).mp3" data-title="In This Moment"
-                  aria-label="Play In This Moment">▶</button> In This Moment</p>
+                  data-src="assets/audio/after_nothing_comes/02-Fugue State-in this moment-(master 24-48).mp3"
+                  data-title="In This Moment" aria-label="Play In This Moment">▶</button> In This Moment</p>
               <p><button type="button" class="track-btn"
                   data-src="assets/audio/after_nothing_comes/03-Fugue State-everything happens again-(master 24-48).mp3"
-                  data-title="Everything Happens Again" aria-label="Play Everything Happens Again">▶</button> Everything Happens Again</p>
-              <p><button type="button" class="track-btn" data-src="assets/audio/after_nothing_comes/04-Fugue State-floating-(master 24-48).mp3" data-title="Floating"
-                  aria-label="Play Floating">▶</button> Floating</p>
-              <p><button type="button" class="track-btn" data-src="assets/audio/after_nothing_comes/05-Fugue State-we are lasting-(master 24-48).mp3" data-title="We Are Lasting"
-                  aria-label="Play We Are Lasting">▶</button> We Are Lasting</p>
-              <p><button type="button" class="track-btn" data-src="assets/audio/after_nothing_comes/06-Fugue State-dark-(master 24-48).mp3" data-title="Dark"
+                  data-title="Everything Happens Again" aria-label="Play Everything Happens Again">▶</button> Everything
+                Happens Again</p>
+              <p><button type="button" class="track-btn"
+                  data-src="assets/audio/after_nothing_comes/04-Fugue State-floating-(master 24-48).mp3"
+                  data-title="Floating" aria-label="Play Floating">▶</button> Floating</p>
+              <p><button type="button" class="track-btn"
+                  data-src="assets/audio/after_nothing_comes/05-Fugue State-we are lasting-(master 24-48).mp3"
+                  data-title="We Are Lasting" aria-label="Play We Are Lasting">▶</button> We Are Lasting</p>
+              <p><button type="button" class="track-btn"
+                  data-src="assets/audio/after_nothing_comes/06-Fugue State-dark-(master 24-48).mp3" data-title="Dark"
                   aria-label="Play Dark">▶</button> Dark</p>
-              <p><button type="button" class="track-btn" data-src="assets/audio/after_nothing_comes/07-Fugue State-the dancer at midnight-(master 24-48).mp3" data-title="The Dancer at Midnight"
-                  aria-label="Play The Dancer at Midnight">▶</button> The Dancer at Midnight</p>
-              <p><button type="button" class="track-btn" data-src="assets/audio/after_nothing_comes/08-Fugue State-so what is there-(master 24-48).mp3"
-                  data-title="So What Is There?"
-                  aria-label="Play So What Is There?">▶</button> So What Is There?</p>
-              <p><button type="button" class="track-btn" data-src="assets/audio/after_nothing_comes/09-Fugue State-he was always so precise-(master 24-48).mp3" data-title="He Was Always So Precise"
-                  aria-label="Play He Was Always So Precise">▶</button> He Was Always So Precise</p>
-              <p><button type="button" class="track-btn" data-src="assets/audio/after_nothing_comes/10-Fugue State-reflections-(master 24-48).mp3"
+              <p><button type="button" class="track-btn"
+                  data-src="assets/audio/after_nothing_comes/07-Fugue State-the dancer at midnight-(master 24-48).mp3"
+                  data-title="The Dancer at Midnight" aria-label="Play The Dancer at Midnight">▶</button> The Dancer at
+                Midnight</p>
+              <p><button type="button" class="track-btn"
+                  data-src="assets/audio/after_nothing_comes/08-Fugue State-so what is there-(master 24-48).mp3"
+                  data-title="So What Is There?" aria-label="Play So What Is There?">▶</button> So What Is There?</p>
+              <p><button type="button" class="track-btn"
+                  data-src="assets/audio/after_nothing_comes/09-Fugue State-he was always so precise-(master 24-48).mp3"
+                  data-title="He Was Always So Precise" aria-label="Play He Was Always So Precise">▶</button> He Was
+                Always So Precise</p>
+              <p><button type="button" class="track-btn"
+                  data-src="assets/audio/after_nothing_comes/10-Fugue State-reflections-(master 24-48).mp3"
                   data-title="Reflections" aria-label="Play Reflections">▶</button> Reflections
               </p>
               <br>
@@ -391,25 +430,24 @@
             <button class="less-btn" type="button" data-collapse>Less...</button>
           </p>
         </div>
-<br>
+        <br>
 
       </div>
-       <!-- Sticky audio player: hidden until a track is played -->
+      <!-- Sticky audio player: hidden until a track is played -->
 
 
-    
+
     </main>
-        <div class="player" id="player" role="region" aria-label="Audio player" inert>
-        <button type="button" class="player-btn" id="player-toggle" aria-label="Play">▶</button>
-        <div class="player-info" aria-live="polite">
-            <span class="player-label">Now playing</span>
-            <span class="player-title" id="player-title"></span>
-            <span class="player-release" id="player-release"></span>
-        </div>
-        <span class="player-time" id="player-time">0:00</span>
-        <input type="range" class="player-seek" id="player-seek" min="0" max="100" step="0.1" value="0"
-            aria-label="Seek">
-        <span class="player-time" id="player-duration">0:00</span>
+    <div class="player" id="player" role="region" aria-label="Audio player" inert>
+      <button type="button" class="player-btn" id="player-toggle" aria-label="Play">▶</button>
+      <div class="player-info" aria-live="polite">
+        <span class="player-label">Now playing</span>
+        <span class="player-title" id="player-title"></span>
+        <span class="player-release" id="player-release"></span>
+      </div>
+      <span class="player-time" id="player-time">0:00</span>
+      <input type="range" class="player-seek" id="player-seek" min="0" max="100" step="0.1" value="0" aria-label="Seek">
+      <span class="player-time" id="player-duration">0:00</span>
     </div>
   </div>
 
@@ -444,108 +482,107 @@
       }
     })();
   </script>
-   <script>
-        // One shared audio element drives both the track buttons and the sticky player.
-        (() => {
-            const audio = new Audio();
-            audio.preload = 'none';
-            const PLAY = '▶', PAUSE = '❚❚';
+  <script>
+    // One shared audio element drives both the track buttons and the sticky player.
+    (() => {
+      const audio = new Audio();
+      audio.preload = 'none';
+const PLAY = '\u25B6\uFE0E', PAUSE = '\u275A\u275A';
+      const player = document.getElementById('player');
+      const pToggle = document.getElementById('player-toggle');
+      const pTitle = document.getElementById('player-title');
+      const pRelease = document.getElementById('player-release');
+      const pSeek = document.getElementById('player-seek');
+      const pTime = document.getElementById('player-time');
+      const pDur = document.getElementById('player-duration');
 
-            const player = document.getElementById('player');
-            const pToggle = document.getElementById('player-toggle');
-            const pTitle = document.getElementById('player-title');
-            const pRelease = document.getElementById('player-release');
-            const pSeek = document.getElementById('player-seek');
-            const pTime = document.getElementById('player-time');
-            const pDur = document.getElementById('player-duration');
+      let current = null;   // the track button that is loaded
+      let seeking = false;
 
-            let current = null;   // the track button that is loaded
-            let seeking = false;
+      const fmt = (t) => {
+        if (!isFinite(t)) return '0:00';
+        const m = Math.floor(t / 60), s = Math.floor(t % 60);
+        return m + ':' + String(s).padStart(2, '0');
+      };
 
-            const fmt = (t) => {
-                if (!isFinite(t)) return '0:00';
-                const m = Math.floor(t / 60), s = Math.floor(t % 60);
-                return m + ':' + String(s).padStart(2, '0');
-            };
+      const setBtn = (btn, playing) => {
+        btn.textContent = playing ? PAUSE : PLAY;
+        btn.setAttribute('aria-label', (playing ? 'Pause ' : 'Play ') + btn.dataset.title);
+        btn.classList.toggle('is-playing', playing);
+      };
 
-            const setBtn = (btn, playing) => {
-                btn.textContent = playing ? PAUSE : PLAY;
-                btn.setAttribute('aria-label', (playing ? 'Pause ' : 'Play ') + btn.dataset.title);
-                btn.classList.toggle('is-playing', playing);
-            };
+      // Keep every control in step with the real audio state
+      const sync = () => {
+        const playing = !audio.paused && !audio.ended;
+        if (current) setBtn(current, playing);
+        pToggle.textContent = playing ? PAUSE : PLAY;
+        pToggle.setAttribute('aria-label', playing ? 'Pause' : 'Play');
+      };
 
-            // Keep every control in step with the real audio state
-            const sync = () => {
-                const playing = !audio.paused && !audio.ended;
-                if (current) setBtn(current, playing);
-                pToggle.textContent = playing ? PAUSE : PLAY;
-                pToggle.setAttribute('aria-label', playing ? 'Pause' : 'Play');
-            };
+      const showPlayer = () => {
+        player.inert = false;
+        player.classList.add('is-active');
+        document.body.classList.add('has-player');
+      };
 
-            const showPlayer = () => {
-                player.inert = false;
-                player.classList.add('is-active');
-                document.body.classList.add('has-player');
-            };
+      const play = () => audio.play().catch(() => {
+        pTitle.textContent = 'Couldn\u2019t load ' + (current ? current.dataset.title : 'track');
+        sync();
+      });
 
-            const play = () => audio.play().catch(() => {
-                pTitle.textContent = 'Couldn\u2019t load ' + (current ? current.dataset.title : 'track');
-                sync();
-            });
+      document.addEventListener('click', (e) => {
+        const btn = e.target.closest('.track-btn');
+        if (!btn) return;
 
-            document.addEventListener('click', (e) => {
-                const btn = e.target.closest('.track-btn');
-                if (!btn) return;
+        // Same track: toggle pause / resume
+        if (btn === current) {
+          audio.paused ? play() : audio.pause();
+          return;
+        }
 
-                // Same track: toggle pause / resume
-                if (btn === current) {
-                    audio.paused ? play() : audio.pause();
-                    return;
-                }
+        // Different track: end the current one, start the new one
+        if (current) {
+          audio.pause();
+          audio.currentTime = 0;
+          setBtn(current, false);
+        }
+        current = btn;
+        audio.src = btn.dataset.src;
+        pTitle.textContent = btn.dataset.title;
+        const rel = btn.closest('.item')?.querySelector('h3');
+        pRelease.textContent = rel ? rel.textContent : '';
+        pSeek.value = 0;
+        pTime.textContent = '0:00';
+        pDur.textContent = '0:00';
+        showPlayer();
+        play();
+      });
 
-                // Different track: end the current one, start the new one
-                if (current) {
-                    audio.pause();
-                    audio.currentTime = 0;
-                    setBtn(current, false);
-                }
-                current = btn;
-                audio.src = btn.dataset.src;
-                pTitle.textContent = btn.dataset.title;
-                const rel = btn.closest('.item')?.querySelector('h3');
-                pRelease.textContent = rel ? rel.textContent : '';
-                pSeek.value = 0;
-                pTime.textContent = '0:00';
-                pDur.textContent = '0:00';
-                showPlayer();
-                play();
-            });
+      // Player bar controls
+      pToggle.addEventListener('click', () => {
+        if (!current) return;
+        audio.paused ? play() : audio.pause();
+      });
 
-            // Player bar controls
-            pToggle.addEventListener('click', () => {
-                if (!current) return;
-                audio.paused ? play() : audio.pause();
-            });
+      pSeek.addEventListener('pointerdown', () => { seeking = true; });
+      pSeek.addEventListener('pointerup', () => { seeking = false; });
+      pSeek.addEventListener('input', () => {
+        if (audio.duration) audio.currentTime = (pSeek.value / 100) * audio.duration;
+        pTime.textContent = fmt(audio.currentTime);
+      });
 
-            pSeek.addEventListener('pointerdown', () => { seeking = true; });
-            pSeek.addEventListener('pointerup', () => { seeking = false; });
-            pSeek.addEventListener('input', () => {
-                if (audio.duration) audio.currentTime = (pSeek.value / 100) * audio.duration;
-                pTime.textContent = fmt(audio.currentTime);
-            });
-
-            // Audio events
-            audio.addEventListener('play', sync);
-            audio.addEventListener('pause', sync);
-            audio.addEventListener('ended', sync);
-            audio.addEventListener('error', sync);
-            audio.addEventListener('loadedmetadata', () => { pDur.textContent = fmt(audio.duration); });
-            audio.addEventListener('timeupdate', () => {
-                pTime.textContent = fmt(audio.currentTime);
-                if (!seeking && audio.duration) pSeek.value = (audio.currentTime / audio.duration) * 100;
-            });
-        })();
-    </script>
+      // Audio events
+      audio.addEventListener('play', sync);
+      audio.addEventListener('pause', sync);
+      audio.addEventListener('ended', sync);
+      audio.addEventListener('error', sync);
+      audio.addEventListener('loadedmetadata', () => { pDur.textContent = fmt(audio.duration); });
+      audio.addEventListener('timeupdate', () => {
+        pTime.textContent = fmt(audio.currentTime);
+        if (!seeking && audio.duration) pSeek.value = (audio.currentTime / audio.duration) * 100;
+      });
+    })();
+  </script>
   <div style="text-align:right; padding:.5rem;color:grey; font-size:0.5rem;"><a
       href="https://www.vecteezy.com/free-photos/black-and-white-watercolor-background">Black And White Watercolor
       Background Stock photos by Vecteezy</a></div>

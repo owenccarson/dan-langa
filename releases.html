@@ -62,12 +62,13 @@
                 <a href="projects.html">Projects</a>
                 <a href="compositions.html">Compositions</a><a href="credits.html">Credits</a>
                 <a href="dates.html">Dates</a>
-                <hr>
+                 <div style="height:20px"></div>
                 <a href="about.html">About</a>
                 <a href="contact.html">Contact</a>
-                <hr>
-                <a href="store.html">Store ↗</a>
-                <a href="newsletter.html">Newsletter ↗</a>
+                <div style="height:20px"></div>
+  <a href="https://danlanga.bandcamp.com/merch" target="_blank">Store ↗</a>
+        <a href="https://danlanga.us16.list-manage.com/subscribe?u=081a6517eb65f5830fa1c7b0c&id=927f4ac011"
+          target="_blank">Newsletter ↗</a>
             </nav>
         </aside>
         <main class="content" id="main">
@@ -563,8 +564,7 @@
         (() => {
             const audio = new Audio();
             audio.preload = 'none';
-            const PLAY = '▶', PAUSE = '❚❚';
-
+const PLAY = '\u25B6\uFE0E', PAUSE = '\u275A\u275A';
             const player = document.getElementById('player');
             const pToggle = document.getElementById('player-toggle');
             const pTitle = document.getElementById('player-title');
