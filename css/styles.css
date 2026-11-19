@@ -598,7 +598,7 @@ button.btn {
 
         /* Playing state: dark background covers the whole row, text turns white */
         .tracks p:has(.track-btn.is-playing) {
-            background: #78716d;
+            background: #9c938e;
             /* same as the button; swap for a darker shade if you like */
             color: #fff;
         }
